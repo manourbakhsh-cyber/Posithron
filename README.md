@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/manourbakhsh-cyber/Posithron/blob/f28a97d3510e223e27b48d3a0fbd5e665a680a77/Posithron_logo.png" alt="Posithron Logo" width="300"/>
+  <img src="https://raw.githubusercontent.com/manourbakhsh-cyber/Posithron/main/Posithron_logo.png" alt="Posithron Logo" width="300"/>
 </p>
 # ⚛️ Posithron Protocol
 ### Beyond energy-wasting Proof-of-Work.
