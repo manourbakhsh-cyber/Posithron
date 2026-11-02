@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="posithron_logo.png" alt="Posithron Logo" width="200"/>
+</p>
 # ⚛️ Posithron Protocol
 ### Beyond energy-wasting Proof-of-Work.
 
