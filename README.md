@@ -36,7 +36,7 @@ Posithron introduces the "Interference Reward" based on the physics of wave inte
 
 ## 📄 Read the Full Whitepaper
 For complete mathematical proofs, tokenomics, security simulations, and the roadmap, read our whitepaper here:
-👉 **[Read the Posithron Whitepaper](Posithron_Whitepaper.md)**
+👉 **[Read the Posithron Whitepaper](Posithron_whitepaper.md)**
 
 ---
 
