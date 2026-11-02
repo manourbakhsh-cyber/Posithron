@@ -1,0 +1,28 @@
+{
+  "project_name": "Posithron",
+  "ticker": "PSTR",
+  "total_supply": 100000000,
+  "distribution": {
+    "network_rewards_nodes": {
+      "percentage": 50,
+      "description": "Distributed over 10 years to AI and Energy nodes"
+    },
+    "treasury_ecosystem": {
+      "percentage": 20,
+      "description": "Development, bug bounties, and marketing"
+    },
+    "founding_team": {
+      "percentage": 20,
+      "description": "Core team and early contributors",
+      "vesting_schedule": "1 year cliff, 2 years linear monthly unlock"
+    },
+    "seed_investors_liquidity": {
+      "percentage": 10,
+      "description": "Early backers and DEX liquidity"
+    }
+  },
+  "deflationary_mechanism": {
+    "transaction_fee_burn_percentage": 50,
+    "description": "50% of network gas fees are burned to reduce supply over time"
+  }
+}
