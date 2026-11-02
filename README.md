@@ -43,3 +43,5 @@ For complete mathematical proofs, tokenomics, security simulations, and the road
 > *"Posithron is not an altcoin. It is an evolution. It transforms the blockchain into a decentralized engine for human progress, fueling AI with green energy, and securing the network with the fundamental laws of quantum mechanics."*
 
 **Join the Posithron Revolution.**
+---
+🌐 **Official Website:** [https://manourbakhsh-cyber.github.io/Posithron/](https://manourbakhsh-cyber.github.io/Posithron/)
