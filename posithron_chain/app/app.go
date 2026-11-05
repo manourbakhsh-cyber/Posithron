@@ -1,6 +1,7 @@
 package app
 
 import (
+	sdkmath "cosmossdk.io/math"
 	clienthelpers "cosmossdk.io/client/v2/helpers"
 	"cosmossdk.io/core/appmodule"
 	"cosmossdk.io/depinject"
@@ -289,4 +290,8 @@ func BlockedAddresses() map[string]bool {
 	}
 
 	return result
+}
+
+func init() {
+	sdk.DefaultPowerReduction = sdkmath.NewInt(1000000)
 }
