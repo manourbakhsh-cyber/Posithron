@@ -1,7 +1,8 @@
 package keeper
 
-import (		"context"
-		"strconv"
+import (
+	"context"
+	"strconv"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -12,7 +13,6 @@ func (k msgServer) EntangleNodes(goCtx context.Context, msg *types.MsgEntangleNo
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	index := strconv.FormatInt(ctx.BlockHeight(), 10) + "-" + msg.AiNode + "-" + msg.EnergyNode
-
 
 	pairRecord := types.PairRecord{
 		Index:      index,

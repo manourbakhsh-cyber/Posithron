@@ -1,0 +1,17 @@
+syntax = "proto3";
+package posithron.qrng.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "posithron/qrng/v1/params.proto";
+
+option go_package = "posithron/x/qrng/types";
+
+// GenesisState defines the qrng module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

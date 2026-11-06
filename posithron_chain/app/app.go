@@ -48,6 +48,7 @@ import (
 	greenenergymodulekeeper "posithron/x/greenenergy/keeper"
 	interferencemodulekeeper "posithron/x/interference/keeper"
 	posithronmodulekeeper "posithron/x/posithron/keeper"
+	qrngmodulekeeper "posithron/x/qrng/keeper"
 )
 
 const (
@@ -105,6 +106,7 @@ type App struct {
 	InterferenceKeeper interferencemodulekeeper.Keeper
 	GreenenergyKeeper  greenenergymodulekeeper.Keeper
 	EntanglementKeeper entanglementmodulekeeper.Keeper
+	QrngKeeper         qrngmodulekeeper.Keeper
 }
 
 func init() {
@@ -187,6 +189,7 @@ func New(
 		&app.InterferenceKeeper,
 		&app.GreenenergyKeeper,
 		&app.EntanglementKeeper,
+		&app.QrngKeeper,
 	); err != nil {
 		panic(err)
 	}

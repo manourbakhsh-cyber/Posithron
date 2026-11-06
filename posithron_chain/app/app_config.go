@@ -13,6 +13,8 @@ import (
 	interferencemoduletypes "posithron/x/interference/types"
 	_ "posithron/x/posithron/module"
 	posithronmoduletypes "posithron/x/posithron/types"
+	_ "posithron/x/qrng/module"
+	qrngmoduletypes "posithron/x/qrng/types"
 
 	runtimev1alpha1 "cosmossdk.io/api/cosmos/app/runtime/v1alpha1"
 	appv1alpha1 "cosmossdk.io/api/cosmos/app/v1alpha1"
@@ -119,14 +121,14 @@ var (
 						// ibc modules
 						ibcexported.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName},
 					EndBlockers: []string{
 						banktypes.ModuleName,
 						govtypes.ModuleName,
 						stakingtypes.ModuleName,
 						feegrant.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName},
 					// The following is mostly only needed when ModuleName != StoreKey name.
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
 						{
@@ -158,7 +160,7 @@ var (
 						ibctransfertypes.ModuleName,
 						icatypes.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName},
 				}),
 			},
 			{
@@ -252,6 +254,9 @@ var (
 			}, {
 				Name:   entanglementmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&entanglementmoduletypes.Module{}),
+			}, {
+				Name:   qrngmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&qrngmoduletypes.Module{}),
 			}},
 	})
 )
