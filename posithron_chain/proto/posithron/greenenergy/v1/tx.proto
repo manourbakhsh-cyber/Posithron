@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package posithron.greenenergy.v1;
+
+import "amino/amino.proto";
+import "cosmos/msg/v1/msg.proto";
+import "cosmos_proto/cosmos.proto";
+import "gogoproto/gogo.proto";
+import "posithron/greenenergy/v1/params.proto";
+
+option go_package = "posithron/x/greenenergy/types";
+
+// Msg defines the Msg service.
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+
+  // UpdateParams defines a (governance) operation for updating the module
+  // parameters. The authority defaults to the x/gov module account.
+  rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+
+  // CreateEnergyRecord defines the CreateEnergyRecord RPC.
+  rpc CreateEnergyRecord(MsgCreateEnergyRecord) returns (MsgCreateEnergyRecordResponse);
+
+  // UpdateEnergyRecord defines the UpdateEnergyRecord RPC.
+  rpc UpdateEnergyRecord(MsgUpdateEnergyRecord) returns (MsgUpdateEnergyRecordResponse);
+
+  // DeleteEnergyRecord defines the DeleteEnergyRecord RPC.
+  rpc DeleteEnergyRecord(MsgDeleteEnergyRecord) returns (MsgDeleteEnergyRecordResponse);
+}
+// MsgUpdateParams is the Msg/UpdateParams request type.
+message MsgUpdateParams {
+  option (cosmos.msg.v1.signer) = "authority";
+  option (amino.name) = "posithron/x/greenenergy/MsgUpdateParams";
+
+  // authority is the address that controls the module (defaults to x/gov unless overwritten).
+  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+
+  // params defines the module parameters to update.
+
+  // NOTE: All parameters must be supplied.
+  Params params = 2 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// MsgUpdateParamsResponse defines the response structure for executing a
+// MsgUpdateParams message.
+message MsgUpdateParamsResponse {}
+
+// MsgCreateEnergyRecord defines the MsgCreateEnergyRecord message.
+message MsgCreateEnergyRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+  int64 amount = 3;
+  string source = 4;
+}
+
+// MsgCreateEnergyRecordResponse defines the MsgCreateEnergyRecordResponse message.
+message MsgCreateEnergyRecordResponse {}
+
+// MsgUpdateEnergyRecord defines the MsgUpdateEnergyRecord message.
+message MsgUpdateEnergyRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+  int64 amount = 3;
+  string source = 4;
+}
+
+// MsgUpdateEnergyRecordResponse defines the MsgUpdateEnergyRecordResponse message.
+message MsgUpdateEnergyRecordResponse {}
+
+// MsgDeleteEnergyRecord defines the MsgDeleteEnergyRecord message.
+message MsgDeleteEnergyRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+}
+
+// MsgDeleteEnergyRecordResponse defines the MsgDeleteEnergyRecordResponse message.
+message MsgDeleteEnergyRecordResponse {}

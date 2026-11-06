@@ -1,0 +1,12 @@
+syntax = "proto3";
+package posithron.greenenergy.v1;
+
+option go_package = "posithron/x/greenenergy/types";
+
+// EnergyRecord defines the EnergyRecord message.
+message EnergyRecord {
+  string index = 1;
+  int64 amount = 2;
+  string source = 3;
+  string creator = 4;
+}

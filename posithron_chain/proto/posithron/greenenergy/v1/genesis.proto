@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package posithron.greenenergy.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "posithron/greenenergy/v1/energy_record.proto";
+import "posithron/greenenergy/v1/params.proto";
+
+option go_package = "posithron/x/greenenergy/types";
+
+// GenesisState defines the greenenergy module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+  repeated EnergyRecord energy_record_map = 2 [(gogoproto.nullable) = false];
+}

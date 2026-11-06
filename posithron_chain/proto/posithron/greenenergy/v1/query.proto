@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package posithron.greenenergy.v1;
+
+import "amino/amino.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "posithron/greenenergy/v1/energy_record.proto";
+import "posithron/greenenergy/v1/params.proto";
+
+option go_package = "posithron/x/greenenergy/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/posithron/greenenergy/v1/params";
+  }
+
+  // ListEnergyRecord Queries a list of EnergyRecord items.
+  rpc GetEnergyRecord(QueryGetEnergyRecordRequest) returns (QueryGetEnergyRecordResponse) {
+    option (google.api.http).get = "/posithron/greenenergy/v1/energy_record/{index}";
+  }
+
+  // ListEnergyRecord defines the ListEnergyRecord RPC.
+  rpc ListEnergyRecord(QueryAllEnergyRecordRequest) returns (QueryAllEnergyRecordResponse) {
+    option (google.api.http).get = "/posithron/greenenergy/v1/energy_record";
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// QueryGetEnergyRecordRequest defines the QueryGetEnergyRecordRequest message.
+message QueryGetEnergyRecordRequest {
+  string index = 1;
+}
+
+// QueryGetEnergyRecordResponse defines the QueryGetEnergyRecordResponse message.
+message QueryGetEnergyRecordResponse {
+  EnergyRecord energy_record = 1 [(gogoproto.nullable) = false];
+}
+
+// QueryAllEnergyRecordRequest defines the QueryAllEnergyRecordRequest message.
+message QueryAllEnergyRecordRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryAllEnergyRecordResponse defines the QueryAllEnergyRecordResponse message.
+message QueryAllEnergyRecordResponse {
+  repeated EnergyRecord energy_record = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

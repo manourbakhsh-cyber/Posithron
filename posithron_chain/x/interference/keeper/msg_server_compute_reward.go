@@ -1,11 +1,13 @@
 package keeper
 
-import (		"context"
-		"fmt"
-		"math"
+import (
+	"context"
+	"fmt"
+	"math"
+
+	"posithron/x/interference/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"posithron/x/interference/types"
 )
 
 func (k msgServer) ComputeReward(goCtx context.Context, msg *types.MsgComputeReward) (*types.MsgComputeRewardResponse, error) {
