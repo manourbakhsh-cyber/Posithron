@@ -6,7 +6,6 @@ import (
 	"math"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-
 	"posithron/x/cognition/types"
 )
 
@@ -31,7 +30,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 	interference := 2.0 * math.Sqrt(aiShare*energyShare) * math.Cos(rad)
 	rewardInt := int64(interference * 1000)
 
-	// Emit the quantum reward event
+	// 3. Emit the quantum reward event
 	ctx.EventManager().EmitEvent(
 		sdk.NewEvent(
 			"task_completed_with_quantum_reward",
@@ -40,7 +39,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		),
 	)
 
-	// 3. Transfer the Bounty (from Creator to Agent)
+	// 4. Transfer the Bounty (from Creator to Agent)
 	creatorAddr, err := sdk.AccAddressFromBech32(task.Creator)
 	if err != nil {
 		return nil, fmt.Errorf("Invalid creator address: %s", err)
@@ -58,7 +57,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		}
 	}
 
-	// 4. Update the task status
+	// 5. Update the task status
 	task.Status = "completed"
 	if err := k.TaskRecord.Set(ctx, task.Index, task); err != nil {
 		return nil, err
