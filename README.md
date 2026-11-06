@@ -1,7 +1,8 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/manourbakhsh-cyber/Posithron/main/Posithron_logo.png" alt="Posithron Logo" width="300"/>
+  <img src="posithron-logo.png" alt="Posithron Logo" width="300"/>
 </p>
-# ⚛️ Posithron Protocol
+
+# 暴️ Posithron Protocol
 ### Beyond energy-wasting Proof-of-Work.
 
 **Posithron** is a next-generation cryptocurrency built on quantum physics principles. It replaces Bitcoin's blind, energy-consuming mining with a symbiotic consensus that **rewards renewable energy production** and **fuels Artificial Intelligence**.
@@ -24,11 +25,10 @@ Before the QRNG beacon is released, nodes commit to their work. Once the quantum
 
 ---
 
-## ⚙️ Economic Model & Interference Rewards
+## ⛙️ Economic Model & Interference Rewards
 Posithron introduces the "Interference Reward" based on the physics of wave interference:
-**R = (αA + βB) + γ * 2√(A * B) * cos(φ)**
-
-*   **cos(φ):** The phase difference. If AI work is executed exactly when renewable energy is peaking, the phase is zero, and the node receives a **maximum interference bonus**.
+**R = (αA + βB) + γ * 2¤(A * B) * cos(��)j**
+*   **cos(φ): ** The phase difference. If AA work is executed exactly when renewable energy is peaking, the phase is zero, and the node receives a **maximum interference bonus**.
 *   **Entanglement Bonus:** Nodes are randomly paired (AI node + Energy node) to share mutual rewards.
 *   **Casimir Reward & Hawking Evaporation:** Built-in mechanisms for network stability and anti-centralization.
 
@@ -36,23 +36,21 @@ Posithron introduces the "Interference Reward" based on the physics of wave inte
 
 ## 📄 Read the Full Whitepaper
 For complete mathematical proofs, tokenomics, security simulations, and the roadmap, read our whitepaper here:
-👉 **[Read the Posithron Whitepaper](Posithron_whitepaper.md)**
+🉙 **[Read the Posithron Whitepaper](Posithron_Whitepaper.md)**
 
 ---
 
 > *"Posithron is not an altcoin. It is an evolution. It transforms the blockchain into a decentralized engine for human progress, fueling AI with green energy, and securing the network with the fundamental laws of quantum mechanics."*
 
 **Join the Posithron Revolution.**
----
-🌐 **Official Website:** [https://manourbakhsh-cyber.github.io/Posithron/](https://manourbakhsh-cyber.github.io/Posithron/)
 
 ---
 
-## 🏗️ Live Testnet Modules (Successfully Implemented & Tested)
+## 🏗 Live Testnet Modules (Successfully Implemented & Tested)
 We have successfully built and tested the core modules of the Posithron blockchain:
 1.  **Cognition (`x/cognition`)**: Manages AI tasks, result submission, and automated bounty payouts.
 2.  **GreenEnergy (`x/greenenergy`)**: Records and verifies renewable energy production on-chain.
-3.  **Interference (`x/interference`)**: Calculates the quantum wave interference reward formula: `I = 2 * √(A*B) * cos(φ)`.
+3.  **Interference (`x/interference`)**: Calculates the quantum wave interference reward formula: `I = 2 * √(A*B) * cos(φ)`
 4.  **QRNG (`x/qrng`)**: The Quantum Observer. Generates unpredictable on-chain randomness based on block hashes.
 5.  **Entanglement (`x/entanglement`)**: Pairs AI nodes with Energy nodes to share mutual rewards.
 6.  **AI Work (`x/aiwork`)**: The foundational module for AI compute tracking.
