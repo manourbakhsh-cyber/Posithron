@@ -30,6 +30,9 @@ service Msg {
 
   // DeleteTaskRecord defines the DeleteTaskRecord RPC.
   rpc DeleteTaskRecord(MsgDeleteTaskRecord) returns (MsgDeleteTaskRecordResponse);
+
+  // SubmitResult defines the SubmitResult RPC.
+  rpc SubmitResult(MsgSubmitResult) returns (MsgSubmitResultResponse);
 }
 // MsgUpdateParams is the Msg/UpdateParams request type.
 message MsgUpdateParams {
@@ -98,3 +101,14 @@ message MsgDeleteTaskRecord {
 
 // MsgDeleteTaskRecordResponse defines the MsgDeleteTaskRecordResponse message.
 message MsgDeleteTaskRecordResponse {}
+
+// MsgSubmitResult defines the MsgSubmitResult message.
+message MsgSubmitResult {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string task_id = 2;
+  string result = 3;
+}
+
+// MsgSubmitResultResponse defines the MsgSubmitResultResponse message.
+message MsgSubmitResultResponse {}

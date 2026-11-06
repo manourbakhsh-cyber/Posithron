@@ -63,6 +63,12 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Short:          "Delete task-record",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "index"}},
 				},
+				{
+					RpcMethod:      "SubmitResult",
+					Use:            "submit-result [task-id] [result]",
+					Short:          "Send a submit-result tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "task_id"}, {ProtoField: "result"}},
+				},
 			},
 		},
 	}

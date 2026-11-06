@@ -8,6 +8,10 @@ import (
 
 func RegisterInterfaces(registrar codectypes.InterfaceRegistry) {
 	registrar.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgSubmitResult{},
+	)
+
+	registrar.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgCreateTaskRecord{},
 		&MsgUpdateTaskRecord{},
 		&MsgDeleteTaskRecord{},

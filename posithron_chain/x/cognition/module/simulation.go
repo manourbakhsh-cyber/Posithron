@@ -94,6 +94,21 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		weightMsgDeleteTaskRecord,
 		cognitionsimulation.SimulateMsgDeleteTaskRecord(am.authKeeper, am.bankKeeper, am.keeper, simState.TxConfig),
 	))
+	const (
+		opWeightMsgSubmitResult          = "op_weight_msg_cognition"
+		defaultWeightMsgSubmitResult int = 100
+	)
+
+	var weightMsgSubmitResult int
+	simState.AppParams.GetOrGenerate(opWeightMsgSubmitResult, &weightMsgSubmitResult, nil,
+		func(_ *rand.Rand) {
+			weightMsgSubmitResult = defaultWeightMsgSubmitResult
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgSubmitResult,
+		cognitionsimulation.SimulateMsgSubmitResult(am.authKeeper, am.bankKeeper, am.keeper, simState.TxConfig),
+	))
 
 	return operations
 }
