@@ -43,6 +43,7 @@ import (
 
 	"posithron/docs"
 	aiworkmodulekeeper "posithron/x/aiwork/keeper"
+	casimirmodulekeeper "posithron/x/casimir/keeper"
 	cognitionmodulekeeper "posithron/x/cognition/keeper"
 	entanglementmodulekeeper "posithron/x/entanglement/keeper"
 	greenenergymodulekeeper "posithron/x/greenenergy/keeper"
@@ -109,6 +110,7 @@ type App struct {
 	EntanglementKeeper entanglementmodulekeeper.Keeper
 	QrngKeeper         qrngmodulekeeper.Keeper
 	HawkingKeeper      hawkingmodulekeeper.Keeper
+	CasimirKeeper      casimirmodulekeeper.Keeper
 }
 
 func init() {
@@ -193,6 +195,7 @@ func New(
 		&app.EntanglementKeeper,
 		&app.QrngKeeper,
 		&app.HawkingKeeper,
+		&app.CasimirKeeper,
 	); err != nil {
 		panic(err)
 	}

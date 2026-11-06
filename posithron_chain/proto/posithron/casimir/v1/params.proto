@@ -1,0 +1,13 @@
+syntax = "proto3";
+package posithron.casimir.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "posithron/x/casimir/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "posithron/x/casimir/Params";
+  option (gogoproto.equal) = true;
+}

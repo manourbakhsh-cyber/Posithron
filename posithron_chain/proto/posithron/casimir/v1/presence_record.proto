@@ -1,0 +1,12 @@
+syntax = "proto3";
+package posithron.casimir.v1;
+
+option go_package = "posithron/x/casimir/types";
+
+// PresenceRecord defines the PresenceRecord message.
+message PresenceRecord {
+  string index = 1;
+  string status = 2;
+  int64 last_seen = 3;
+  string creator = 4;
+}

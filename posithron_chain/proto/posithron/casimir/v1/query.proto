@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package posithron.casimir.v1;
+
+import "amino/amino.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "posithron/casimir/v1/params.proto";
+import "posithron/casimir/v1/presence_record.proto";
+
+option go_package = "posithron/x/casimir/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/posithron/casimir/v1/params";
+  }
+
+  // ListPresenceRecord Queries a list of PresenceRecord items.
+  rpc GetPresenceRecord(QueryGetPresenceRecordRequest) returns (QueryGetPresenceRecordResponse) {
+    option (google.api.http).get = "/posithron/casimir/v1/presence_record/{index}";
+  }
+
+  // ListPresenceRecord defines the ListPresenceRecord RPC.
+  rpc ListPresenceRecord(QueryAllPresenceRecordRequest) returns (QueryAllPresenceRecordResponse) {
+    option (google.api.http).get = "/posithron/casimir/v1/presence_record";
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// QueryGetPresenceRecordRequest defines the QueryGetPresenceRecordRequest message.
+message QueryGetPresenceRecordRequest {
+  string index = 1;
+}
+
+// QueryGetPresenceRecordResponse defines the QueryGetPresenceRecordResponse message.
+message QueryGetPresenceRecordResponse {
+  PresenceRecord presence_record = 1 [(gogoproto.nullable) = false];
+}
+
+// QueryAllPresenceRecordRequest defines the QueryAllPresenceRecordRequest message.
+message QueryAllPresenceRecordRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryAllPresenceRecordResponse defines the QueryAllPresenceRecordResponse message.
+message QueryAllPresenceRecordResponse {
+  repeated PresenceRecord presence_record = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

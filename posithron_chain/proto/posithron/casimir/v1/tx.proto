@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package posithron.casimir.v1;
+
+import "amino/amino.proto";
+import "cosmos/msg/v1/msg.proto";
+import "cosmos_proto/cosmos.proto";
+import "gogoproto/gogo.proto";
+import "posithron/casimir/v1/params.proto";
+
+option go_package = "posithron/x/casimir/types";
+
+// Msg defines the Msg service.
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+
+  // UpdateParams defines a (governance) operation for updating the module
+  // parameters. The authority defaults to the x/gov module account.
+  rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+
+  // CreatePresenceRecord defines the CreatePresenceRecord RPC.
+  rpc CreatePresenceRecord(MsgCreatePresenceRecord) returns (MsgCreatePresenceRecordResponse);
+
+  // UpdatePresenceRecord defines the UpdatePresenceRecord RPC.
+  rpc UpdatePresenceRecord(MsgUpdatePresenceRecord) returns (MsgUpdatePresenceRecordResponse);
+
+  // DeletePresenceRecord defines the DeletePresenceRecord RPC.
+  rpc DeletePresenceRecord(MsgDeletePresenceRecord) returns (MsgDeletePresenceRecordResponse);
+
+  // ClaimCasimir defines the ClaimCasimir RPC.
+  rpc ClaimCasimir(MsgClaimCasimir) returns (MsgClaimCasimirResponse);
+}
+// MsgUpdateParams is the Msg/UpdateParams request type.
+message MsgUpdateParams {
+  option (cosmos.msg.v1.signer) = "authority";
+  option (amino.name) = "posithron/x/casimir/MsgUpdateParams";
+
+  // authority is the address that controls the module (defaults to x/gov unless overwritten).
+  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+
+  // params defines the module parameters to update.
+
+  // NOTE: All parameters must be supplied.
+  Params params = 2 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// MsgUpdateParamsResponse defines the response structure for executing a
+// MsgUpdateParams message.
+message MsgUpdateParamsResponse {}
+
+// MsgCreatePresenceRecord defines the MsgCreatePresenceRecord message.
+message MsgCreatePresenceRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+  string status = 3;
+  int64 last_seen = 4;
+}
+
+// MsgCreatePresenceRecordResponse defines the MsgCreatePresenceRecordResponse message.
+message MsgCreatePresenceRecordResponse {}
+
+// MsgUpdatePresenceRecord defines the MsgUpdatePresenceRecord message.
+message MsgUpdatePresenceRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+  string status = 3;
+  int64 last_seen = 4;
+}
+
+// MsgUpdatePresenceRecordResponse defines the MsgUpdatePresenceRecordResponse message.
+message MsgUpdatePresenceRecordResponse {}
+
+// MsgDeletePresenceRecord defines the MsgDeletePresenceRecord message.
+message MsgDeletePresenceRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+}
+
+// MsgDeletePresenceRecordResponse defines the MsgDeletePresenceRecordResponse message.
+message MsgDeletePresenceRecordResponse {}
+
+// MsgClaimCasimir defines the MsgClaimCasimir message.
+message MsgClaimCasimir {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string node_address = 2;
+}
+
+// MsgClaimCasimirResponse defines the MsgClaimCasimirResponse message.
+message MsgClaimCasimirResponse {}
