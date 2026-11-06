@@ -79,6 +79,36 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		weightMsgDeleteEnergyRecord,
 		greenenergysimulation.SimulateMsgDeleteEnergyRecord(am.authKeeper, am.bankKeeper, am.keeper, simState.TxConfig),
 	))
+	const (
+		opWeightMsgSubmitEnergy          = "op_weight_msg_greenenergy"
+		defaultWeightMsgSubmitEnergy int = 100
+	)
+
+	var weightMsgSubmitEnergy int
+	simState.AppParams.GetOrGenerate(opWeightMsgSubmitEnergy, &weightMsgSubmitEnergy, nil,
+		func(_ *rand.Rand) {
+			weightMsgSubmitEnergy = defaultWeightMsgSubmitEnergy
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgSubmitEnergy,
+		greenenergysimulation.SimulateMsgSubmitEnergy(am.authKeeper, am.bankKeeper, am.keeper, simState.TxConfig),
+	))
+	const (
+		opWeightMsgRecordEnergy          = "op_weight_msg_greenenergy"
+		defaultWeightMsgRecordEnergy int = 100
+	)
+
+	var weightMsgRecordEnergy int
+	simState.AppParams.GetOrGenerate(opWeightMsgRecordEnergy, &weightMsgRecordEnergy, nil,
+		func(_ *rand.Rand) {
+			weightMsgRecordEnergy = defaultWeightMsgRecordEnergy
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgRecordEnergy,
+		greenenergysimulation.SimulateMsgRecordEnergy(am.authKeeper, am.bankKeeper, am.keeper, simState.TxConfig),
+	))
 
 	return operations
 }

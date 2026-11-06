@@ -427,6 +427,202 @@ func (m *MsgDeleteEnergyRecordResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgDeleteEnergyRecordResponse proto.InternalMessageInfo
 
+// MsgSubmitEnergy defines the MsgSubmitEnergy message.
+type MsgSubmitEnergy struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Amount  int64  `protobuf:"varint,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	Source  string `protobuf:"bytes,3,opt,name=source,proto3" json:"source,omitempty"`
+}
+
+func (m *MsgSubmitEnergy) Reset()         { *m = MsgSubmitEnergy{} }
+func (m *MsgSubmitEnergy) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitEnergy) ProtoMessage()    {}
+func (*MsgSubmitEnergy) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5e7d53fb9b99aa3e, []int{8}
+}
+func (m *MsgSubmitEnergy) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSubmitEnergy) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSubmitEnergy.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSubmitEnergy) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitEnergy.Merge(m, src)
+}
+func (m *MsgSubmitEnergy) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSubmitEnergy) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitEnergy.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSubmitEnergy proto.InternalMessageInfo
+
+func (m *MsgSubmitEnergy) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgSubmitEnergy) GetAmount() int64 {
+	if m != nil {
+		return m.Amount
+	}
+	return 0
+}
+
+func (m *MsgSubmitEnergy) GetSource() string {
+	if m != nil {
+		return m.Source
+	}
+	return ""
+}
+
+// MsgSubmitEnergyResponse defines the MsgSubmitEnergyResponse message.
+type MsgSubmitEnergyResponse struct {
+}
+
+func (m *MsgSubmitEnergyResponse) Reset()         { *m = MsgSubmitEnergyResponse{} }
+func (m *MsgSubmitEnergyResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitEnergyResponse) ProtoMessage()    {}
+func (*MsgSubmitEnergyResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5e7d53fb9b99aa3e, []int{9}
+}
+func (m *MsgSubmitEnergyResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSubmitEnergyResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSubmitEnergyResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSubmitEnergyResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitEnergyResponse.Merge(m, src)
+}
+func (m *MsgSubmitEnergyResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSubmitEnergyResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitEnergyResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSubmitEnergyResponse proto.InternalMessageInfo
+
+// MsgRecordEnergy defines the MsgRecordEnergy message.
+type MsgRecordEnergy struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Amount  int64  `protobuf:"varint,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	Source  string `protobuf:"bytes,3,opt,name=source,proto3" json:"source,omitempty"`
+}
+
+func (m *MsgRecordEnergy) Reset()         { *m = MsgRecordEnergy{} }
+func (m *MsgRecordEnergy) String() string { return proto.CompactTextString(m) }
+func (*MsgRecordEnergy) ProtoMessage()    {}
+func (*MsgRecordEnergy) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5e7d53fb9b99aa3e, []int{10}
+}
+func (m *MsgRecordEnergy) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgRecordEnergy) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgRecordEnergy.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgRecordEnergy) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgRecordEnergy.Merge(m, src)
+}
+func (m *MsgRecordEnergy) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgRecordEnergy) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgRecordEnergy.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgRecordEnergy proto.InternalMessageInfo
+
+func (m *MsgRecordEnergy) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgRecordEnergy) GetAmount() int64 {
+	if m != nil {
+		return m.Amount
+	}
+	return 0
+}
+
+func (m *MsgRecordEnergy) GetSource() string {
+	if m != nil {
+		return m.Source
+	}
+	return ""
+}
+
+// MsgRecordEnergyResponse defines the MsgRecordEnergyResponse message.
+type MsgRecordEnergyResponse struct {
+}
+
+func (m *MsgRecordEnergyResponse) Reset()         { *m = MsgRecordEnergyResponse{} }
+func (m *MsgRecordEnergyResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgRecordEnergyResponse) ProtoMessage()    {}
+func (*MsgRecordEnergyResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5e7d53fb9b99aa3e, []int{11}
+}
+func (m *MsgRecordEnergyResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgRecordEnergyResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgRecordEnergyResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgRecordEnergyResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgRecordEnergyResponse.Merge(m, src)
+}
+func (m *MsgRecordEnergyResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgRecordEnergyResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgRecordEnergyResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgRecordEnergyResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgUpdateParams)(nil), "posithron.greenenergy.v1.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "posithron.greenenergy.v1.MsgUpdateParamsResponse")
@@ -436,44 +632,52 @@ func init() {
 	proto.RegisterType((*MsgUpdateEnergyRecordResponse)(nil), "posithron.greenenergy.v1.MsgUpdateEnergyRecordResponse")
 	proto.RegisterType((*MsgDeleteEnergyRecord)(nil), "posithron.greenenergy.v1.MsgDeleteEnergyRecord")
 	proto.RegisterType((*MsgDeleteEnergyRecordResponse)(nil), "posithron.greenenergy.v1.MsgDeleteEnergyRecordResponse")
+	proto.RegisterType((*MsgSubmitEnergy)(nil), "posithron.greenenergy.v1.MsgSubmitEnergy")
+	proto.RegisterType((*MsgSubmitEnergyResponse)(nil), "posithron.greenenergy.v1.MsgSubmitEnergyResponse")
+	proto.RegisterType((*MsgRecordEnergy)(nil), "posithron.greenenergy.v1.MsgRecordEnergy")
+	proto.RegisterType((*MsgRecordEnergyResponse)(nil), "posithron.greenenergy.v1.MsgRecordEnergyResponse")
 }
 
 func init() { proto.RegisterFile("posithron/greenenergy/v1/tx.proto", fileDescriptor_5e7d53fb9b99aa3e) }
 
 var fileDescriptor_5e7d53fb9b99aa3e = []byte{
-	// 506 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x94, 0xbf, 0x8b, 0x13, 0x41,
-	0x14, 0xc7, 0x33, 0xc6, 0x8b, 0x64, 0x3c, 0x10, 0x87, 0xe8, 0xed, 0x2d, 0xdc, 0x5e, 0x0c, 0x88,
-	0x31, 0xe0, 0x2e, 0x89, 0x60, 0x20, 0x9d, 0x39, 0x2d, 0x03, 0xb2, 0x62, 0x63, 0x23, 0x6b, 0xf6,
-	0x31, 0xb7, 0x70, 0xbb, 0x6f, 0x99, 0x99, 0x1c, 0x49, 0x23, 0x62, 0x69, 0xe5, 0x7f, 0x60, 0x6b,
-	0x99, 0xc2, 0x3f, 0xe2, 0xb0, 0x3a, 0xac, 0xac, 0x44, 0x92, 0x22, 0xff, 0x83, 0x95, 0xec, 0xaf,
-	0xcb, 0x5d, 0xb2, 0x7b, 0x5e, 0x0a, 0xc1, 0x26, 0xe4, 0xfd, 0xf8, 0xbe, 0xef, 0xfb, 0xc0, 0xdb,
-	0xa1, 0xf7, 0x42, 0x94, 0x9e, 0x3a, 0x14, 0x18, 0x58, 0x5c, 0x00, 0x04, 0x10, 0x80, 0xe0, 0x13,
-	0xeb, 0xb8, 0x6d, 0xa9, 0xb1, 0x19, 0x0a, 0x54, 0xc8, 0xb4, 0xb3, 0x16, 0xf3, 0x5c, 0x8b, 0x79,
-	0xdc, 0xd6, 0x6f, 0x3b, 0xbe, 0x17, 0xa0, 0x15, 0xff, 0x26, 0xcd, 0xfa, 0xce, 0x10, 0xa5, 0x8f,
-	0xd2, 0xf2, 0x25, 0x8f, 0x86, 0xf8, 0x92, 0xa7, 0x85, 0xdd, 0xa4, 0xf0, 0x26, 0x8e, 0xac, 0x24,
-	0x48, 0x4b, 0x35, 0x8e, 0x1c, 0x93, 0x7c, 0xf4, 0x2f, 0xcd, 0xde, 0x2f, 0xdc, 0x2c, 0x74, 0x84,
-	0xe3, 0xa7, 0xe2, 0xc6, 0x37, 0x42, 0x6f, 0x0d, 0x24, 0x7f, 0x15, 0xba, 0x8e, 0x82, 0x17, 0x71,
-	0x85, 0x3d, 0xa1, 0x55, 0x67, 0xa4, 0x0e, 0x51, 0x78, 0x6a, 0xa2, 0x91, 0x3a, 0x69, 0x56, 0xfb,
-	0xda, 0xf7, 0xaf, 0x8f, 0x6a, 0xa9, 0xeb, 0x53, 0xd7, 0x15, 0x20, 0xe5, 0x4b, 0x25, 0xbc, 0x80,
-	0xdb, 0xcb, 0x56, 0x76, 0x40, 0x2b, 0xc9, 0x6c, 0xed, 0x5a, 0x9d, 0x34, 0x6f, 0x76, 0xea, 0x66,
-	0x11, 0xba, 0x99, 0x38, 0xf5, 0xab, 0x27, 0x3f, 0xf7, 0x4b, 0x5f, 0x16, 0xd3, 0x16, 0xb1, 0x53,
-	0x69, 0xaf, 0xf7, 0x61, 0x31, 0x6d, 0x2d, 0x87, 0x7e, 0x5c, 0x4c, 0x5b, 0x0f, 0x96, 0x28, 0xe3,
-	0x0b, 0x30, 0x2b, 0x8b, 0x37, 0x76, 0xe9, 0xce, 0x4a, 0xca, 0x06, 0x19, 0x62, 0x20, 0xa1, 0xf1,
-	0x99, 0xd0, 0x3b, 0x03, 0xc9, 0x0f, 0x04, 0x38, 0x0a, 0x9e, 0xc7, 0x72, 0x1b, 0x86, 0x28, 0x5c,
-	0xd6, 0xa1, 0x37, 0x86, 0x51, 0x16, 0xc5, 0x5f, 0x59, 0xb3, 0x46, 0x56, 0xa3, 0x5b, 0x5e, 0xe0,
-	0xc2, 0x38, 0x06, 0xad, 0xda, 0x49, 0xc0, 0xee, 0xd2, 0x8a, 0xe3, 0xe3, 0x28, 0x50, 0x5a, 0xb9,
-	0x4e, 0x9a, 0x65, 0x3b, 0x8d, 0xa2, 0xbc, 0xc4, 0x91, 0x18, 0x82, 0x76, 0x3d, 0x6e, 0x4f, 0xa3,
-	0xde, 0x76, 0x84, 0x9a, 0xcd, 0x6c, 0xec, 0xd3, 0xbd, 0xdc, 0x05, 0x57, 0x11, 0x12, 0xbc, 0xff,
-	0x18, 0x61, 0x7d, 0xc1, 0x33, 0x04, 0x8c, 0x09, 0x9e, 0xc1, 0x11, 0xfc, 0x2b, 0x82, 0xdc, 0x8d,
-	0xd6, 0x0d, 0xb3, 0x8d, 0x3a, 0xbf, 0xcb, 0xb4, 0x3c, 0x90, 0x9c, 0x1d, 0xd1, 0xed, 0x0b, 0xdf,
-	0xc0, 0xc3, 0xe2, 0xdb, 0x5d, 0x39, 0x31, 0xbd, 0x7d, 0xe5, 0xd6, 0xcc, 0x95, 0xbd, 0xa3, 0x2c,
-	0xe7, 0x12, 0xad, 0x4b, 0x07, 0xad, 0x0b, 0xf4, 0xee, 0x86, 0x82, 0xf3, 0xfe, 0x39, 0x67, 0x64,
-	0x5d, 0x01, 0x64, 0x03, 0xff, 0xe2, 0x3b, 0x88, 0xfc, 0x73, 0x8e, 0xe0, 0x72, 0xff, 0x75, 0x81,
-	0xde, 0xdd, 0x50, 0x90, 0xf9, 0xeb, 0x5b, 0xef, 0xa3, 0x37, 0xa7, 0xdf, 0x3d, 0x99, 0x19, 0xe4,
-	0x74, 0x66, 0x90, 0x5f, 0x33, 0x83, 0x7c, 0x9a, 0x1b, 0xa5, 0xd3, 0xb9, 0x51, 0xfa, 0x31, 0x37,
-	0x4a, 0xaf, 0xf7, 0x8a, 0x9e, 0x1c, 0x35, 0x09, 0x41, 0xbe, 0xad, 0xc4, 0x8f, 0xe7, 0xe3, 0x3f,
-	0x03, 0x00, 0x10, 0xa3, 0x39, 0x23, 0xff, 0x05, 0x00, 0x00,
+	// 571 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x55, 0x41, 0x8b, 0xd3, 0x40,
+	0x14, 0xee, 0x6c, 0xdd, 0x4a, 0xc7, 0x82, 0x18, 0xaa, 0x9b, 0x0d, 0x6c, 0xb6, 0x16, 0xc4, 0x5a,
+	0xb0, 0x21, 0x15, 0x2c, 0xf4, 0x66, 0x57, 0x8f, 0x05, 0xc9, 0xe2, 0xc5, 0x8b, 0x64, 0x9b, 0x61,
+	0x36, 0xd0, 0x64, 0xc2, 0xcc, 0x74, 0x69, 0x2f, 0x22, 0x7a, 0xf3, 0xe4, 0x3f, 0xf0, 0xea, 0xb1,
+	0x07, 0x7f, 0xc4, 0xe2, 0x69, 0xf1, 0x20, 0x9e, 0x44, 0xda, 0x43, 0xff, 0x86, 0x24, 0x93, 0xb4,
+	0x69, 0x9a, 0xc4, 0x56, 0x10, 0xbd, 0x94, 0xbe, 0xf7, 0xbe, 0xf7, 0xbe, 0xef, 0x9b, 0xce, 0xeb,
+	0xc0, 0xbb, 0x1e, 0x61, 0x36, 0x3f, 0xa7, 0xc4, 0xd5, 0x30, 0x45, 0xc8, 0x45, 0x2e, 0xa2, 0x78,
+	0xa2, 0x5d, 0xe8, 0x1a, 0x1f, 0xb7, 0x3c, 0x4a, 0x38, 0x91, 0xe4, 0x25, 0xa4, 0x15, 0x83, 0xb4,
+	0x2e, 0x74, 0xe5, 0x96, 0xe9, 0xd8, 0x2e, 0xd1, 0x82, 0x4f, 0x01, 0x56, 0x0e, 0x06, 0x84, 0x39,
+	0x84, 0x69, 0x0e, 0xc3, 0xfe, 0x10, 0x87, 0xe1, 0xb0, 0x70, 0x28, 0x0a, 0xaf, 0x82, 0x48, 0x13,
+	0x41, 0x58, 0xaa, 0x62, 0x82, 0x89, 0xc8, 0xfb, 0xdf, 0xc2, 0xec, 0xbd, 0x4c, 0x65, 0x9e, 0x49,
+	0x4d, 0x27, 0x6c, 0xae, 0x7f, 0x01, 0xf0, 0x66, 0x9f, 0xe1, 0x17, 0x9e, 0x65, 0x72, 0xf4, 0x3c,
+	0xa8, 0x48, 0x8f, 0x61, 0xd9, 0x1c, 0xf1, 0x73, 0x42, 0x6d, 0x3e, 0x91, 0x41, 0x0d, 0x34, 0xca,
+	0x3d, 0xf9, 0xeb, 0xe7, 0x87, 0xd5, 0x90, 0xf5, 0x89, 0x65, 0x51, 0xc4, 0xd8, 0x29, 0xa7, 0xb6,
+	0x8b, 0x8d, 0x15, 0x54, 0x3a, 0x81, 0x25, 0x31, 0x5b, 0xde, 0xab, 0x81, 0xc6, 0x8d, 0x76, 0xad,
+	0x95, 0x65, 0xbd, 0x25, 0x98, 0x7a, 0xe5, 0xcb, 0x1f, 0xc7, 0x85, 0x4f, 0x8b, 0x69, 0x13, 0x18,
+	0x61, 0x6b, 0xb7, 0xfb, 0x76, 0x31, 0x6d, 0xae, 0x86, 0xbe, 0x5f, 0x4c, 0x9b, 0xf7, 0x57, 0x56,
+	0xc6, 0x6b, 0x66, 0x12, 0xc2, 0xeb, 0x87, 0xf0, 0x20, 0x91, 0x32, 0x10, 0xf3, 0x88, 0xcb, 0x50,
+	0xfd, 0x23, 0x80, 0xb7, 0xfb, 0x0c, 0x9f, 0x50, 0x64, 0x72, 0xf4, 0x2c, 0x68, 0x37, 0xd0, 0x80,
+	0x50, 0x4b, 0x6a, 0xc3, 0xeb, 0x03, 0x3f, 0x4b, 0xe8, 0x6f, 0xbd, 0x46, 0x40, 0xa9, 0x0a, 0xf7,
+	0x6d, 0xd7, 0x42, 0xe3, 0xc0, 0x68, 0xd9, 0x10, 0x81, 0x74, 0x07, 0x96, 0x4c, 0x87, 0x8c, 0x5c,
+	0x2e, 0x17, 0x6b, 0xa0, 0x51, 0x34, 0xc2, 0xc8, 0xcf, 0x33, 0x32, 0xa2, 0x03, 0x24, 0x5f, 0x0b,
+	0xe0, 0x61, 0xd4, 0xad, 0xf8, 0x56, 0xa3, 0x99, 0xf5, 0x63, 0x78, 0x94, 0x2a, 0x30, 0x69, 0x41,
+	0xd8, 0xfb, 0x8f, 0x2d, 0x6c, 0x0a, 0x5c, 0x5a, 0x20, 0x81, 0x83, 0xa7, 0x68, 0x88, 0xfe, 0x96,
+	0x83, 0x54, 0x45, 0x9b, 0x84, 0x4b, 0x45, 0xef, 0xc4, 0xfd, 0x3f, 0x1d, 0x9d, 0x39, 0x36, 0x17,
+	0x88, 0x3f, 0x12, 0xb3, 0x3a, 0xb8, 0xbd, 0x8c, 0x83, 0x2b, 0xe6, 0x1c, 0x9c, 0xb8, 0xb8, 0x71,
+	0x11, 0x49, 0x81, 0x42, 0xf6, 0x3f, 0x16, 0x18, 0x17, 0x11, 0x09, 0x6c, 0x7f, 0xdb, 0x87, 0xc5,
+	0x3e, 0xc3, 0xd2, 0x10, 0x56, 0xd6, 0xfe, 0x45, 0x1e, 0x64, 0x6f, 0x7f, 0x62, 0x49, 0x15, 0x7d,
+	0x6b, 0x68, 0xc4, 0x2a, 0xbd, 0x86, 0x52, 0xca, 0x2e, 0x6b, 0xb9, 0x83, 0x36, 0x1b, 0x94, 0xce,
+	0x8e, 0x0d, 0x71, 0xfe, 0x94, 0x45, 0xd4, 0xb6, 0x30, 0xb2, 0x03, 0x7f, 0xf6, 0x26, 0xf9, 0xfc,
+	0x29, 0x6b, 0x94, 0xcf, 0xbf, 0xd9, 0xa0, 0x74, 0x76, 0x6c, 0x58, 0xf2, 0x0f, 0x61, 0x65, 0x6d,
+	0x67, 0xf2, 0x7f, 0xed, 0x38, 0x54, 0xd1, 0xb7, 0x86, 0xc6, 0xd9, 0xd6, 0x16, 0x20, 0x9f, 0x2d,
+	0x0e, 0x55, 0xf4, 0xad, 0xa1, 0x11, 0x9b, 0xb2, 0xff, 0xc6, 0x7f, 0x91, 0x7a, 0x9d, 0xcb, 0x99,
+	0x0a, 0xae, 0x66, 0x2a, 0xf8, 0x39, 0x53, 0xc1, 0x87, 0xb9, 0x5a, 0xb8, 0x9a, 0xab, 0x85, 0xef,
+	0x73, 0xb5, 0xf0, 0xf2, 0x28, 0xeb, 0x41, 0xe2, 0x13, 0x0f, 0xb1, 0xb3, 0x52, 0xf0, 0xb4, 0x3e,
+	0xfa, 0x35, 0x00, 0x1a, 0x40, 0xd3, 0x9c, 0x1d, 0x08, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -497,6 +701,10 @@ type MsgClient interface {
 	UpdateEnergyRecord(ctx context.Context, in *MsgUpdateEnergyRecord, opts ...grpc.CallOption) (*MsgUpdateEnergyRecordResponse, error)
 	// DeleteEnergyRecord defines the DeleteEnergyRecord RPC.
 	DeleteEnergyRecord(ctx context.Context, in *MsgDeleteEnergyRecord, opts ...grpc.CallOption) (*MsgDeleteEnergyRecordResponse, error)
+	// SubmitEnergy defines the SubmitEnergy RPC.
+	SubmitEnergy(ctx context.Context, in *MsgSubmitEnergy, opts ...grpc.CallOption) (*MsgSubmitEnergyResponse, error)
+	// RecordEnergy defines the RecordEnergy RPC.
+	RecordEnergy(ctx context.Context, in *MsgRecordEnergy, opts ...grpc.CallOption) (*MsgRecordEnergyResponse, error)
 }
 
 type msgClient struct {
@@ -543,6 +751,24 @@ func (c *msgClient) DeleteEnergyRecord(ctx context.Context, in *MsgDeleteEnergyR
 	return out, nil
 }
 
+func (c *msgClient) SubmitEnergy(ctx context.Context, in *MsgSubmitEnergy, opts ...grpc.CallOption) (*MsgSubmitEnergyResponse, error) {
+	out := new(MsgSubmitEnergyResponse)
+	err := c.cc.Invoke(ctx, "/posithron.greenenergy.v1.Msg/SubmitEnergy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) RecordEnergy(ctx context.Context, in *MsgRecordEnergy, opts ...grpc.CallOption) (*MsgRecordEnergyResponse, error) {
+	out := new(MsgRecordEnergyResponse)
+	err := c.cc.Invoke(ctx, "/posithron.greenenergy.v1.Msg/RecordEnergy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
@@ -554,6 +780,10 @@ type MsgServer interface {
 	UpdateEnergyRecord(context.Context, *MsgUpdateEnergyRecord) (*MsgUpdateEnergyRecordResponse, error)
 	// DeleteEnergyRecord defines the DeleteEnergyRecord RPC.
 	DeleteEnergyRecord(context.Context, *MsgDeleteEnergyRecord) (*MsgDeleteEnergyRecordResponse, error)
+	// SubmitEnergy defines the SubmitEnergy RPC.
+	SubmitEnergy(context.Context, *MsgSubmitEnergy) (*MsgSubmitEnergyResponse, error)
+	// RecordEnergy defines the RecordEnergy RPC.
+	RecordEnergy(context.Context, *MsgRecordEnergy) (*MsgRecordEnergyResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -571,6 +801,12 @@ func (*UnimplementedMsgServer) UpdateEnergyRecord(ctx context.Context, req *MsgU
 }
 func (*UnimplementedMsgServer) DeleteEnergyRecord(ctx context.Context, req *MsgDeleteEnergyRecord) (*MsgDeleteEnergyRecordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEnergyRecord not implemented")
+}
+func (*UnimplementedMsgServer) SubmitEnergy(ctx context.Context, req *MsgSubmitEnergy) (*MsgSubmitEnergyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitEnergy not implemented")
+}
+func (*UnimplementedMsgServer) RecordEnergy(ctx context.Context, req *MsgRecordEnergy) (*MsgRecordEnergyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordEnergy not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -649,6 +885,42 @@ func _Msg_DeleteEnergyRecord_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_SubmitEnergy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSubmitEnergy)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).SubmitEnergy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/posithron.greenenergy.v1.Msg/SubmitEnergy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).SubmitEnergy(ctx, req.(*MsgSubmitEnergy))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_RecordEnergy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgRecordEnergy)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).RecordEnergy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/posithron.greenenergy.v1.Msg/RecordEnergy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).RecordEnergy(ctx, req.(*MsgRecordEnergy))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var Msg_serviceDesc = _Msg_serviceDesc
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "posithron.greenenergy.v1.Msg",
@@ -669,6 +941,14 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteEnergyRecord",
 			Handler:    _Msg_DeleteEnergyRecord_Handler,
+		},
+		{
+			MethodName: "SubmitEnergy",
+			Handler:    _Msg_SubmitEnergy_Handler,
+		},
+		{
+			MethodName: "RecordEnergy",
+			Handler:    _Msg_RecordEnergy_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -942,6 +1222,136 @@ func (m *MsgDeleteEnergyRecordResponse) MarshalToSizedBuffer(dAtA []byte) (int, 
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgSubmitEnergy) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSubmitEnergy) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSubmitEnergy) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Source) > 0 {
+		i -= len(m.Source)
+		copy(dAtA[i:], m.Source)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Source)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Amount != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Amount))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgSubmitEnergyResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSubmitEnergyResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSubmitEnergyResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgRecordEnergy) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgRecordEnergy) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgRecordEnergy) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Source) > 0 {
+		i -= len(m.Source)
+		copy(dAtA[i:], m.Source)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Source)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Amount != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Amount))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgRecordEnergyResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgRecordEnergyResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgRecordEnergyResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -1061,6 +1471,64 @@ func (m *MsgDeleteEnergyRecord) Size() (n int) {
 }
 
 func (m *MsgDeleteEnergyRecordResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgSubmitEnergy) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Amount != 0 {
+		n += 1 + sovTx(uint64(m.Amount))
+	}
+	l = len(m.Source)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgSubmitEnergyResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgRecordEnergy) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Amount != 0 {
+		n += 1 + sovTx(uint64(m.Amount))
+	}
+	l = len(m.Source)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgRecordEnergyResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1811,6 +2279,372 @@ func (m *MsgDeleteEnergyRecordResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgDeleteEnergyRecordResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSubmitEnergy) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSubmitEnergy: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSubmitEnergy: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Amount", wireType)
+			}
+			m.Amount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Amount |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Source", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Source = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSubmitEnergyResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSubmitEnergyResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSubmitEnergyResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgRecordEnergy) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgRecordEnergy: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgRecordEnergy: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Amount", wireType)
+			}
+			m.Amount = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Amount |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Source", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Source = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgRecordEnergyResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgRecordEnergyResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgRecordEnergyResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

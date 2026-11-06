@@ -26,6 +26,12 @@ service Msg {
 
   // DeleteEnergyRecord defines the DeleteEnergyRecord RPC.
   rpc DeleteEnergyRecord(MsgDeleteEnergyRecord) returns (MsgDeleteEnergyRecordResponse);
+
+  // SubmitEnergy defines the SubmitEnergy RPC.
+  rpc SubmitEnergy(MsgSubmitEnergy) returns (MsgSubmitEnergyResponse);
+
+  // RecordEnergy defines the RecordEnergy RPC.
+  rpc RecordEnergy(MsgRecordEnergy) returns (MsgRecordEnergyResponse);
 }
 // MsgUpdateParams is the Msg/UpdateParams request type.
 message MsgUpdateParams {
@@ -81,3 +87,25 @@ message MsgDeleteEnergyRecord {
 
 // MsgDeleteEnergyRecordResponse defines the MsgDeleteEnergyRecordResponse message.
 message MsgDeleteEnergyRecordResponse {}
+
+// MsgSubmitEnergy defines the MsgSubmitEnergy message.
+message MsgSubmitEnergy {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  int64 amount = 2;
+  string source = 3;
+}
+
+// MsgSubmitEnergyResponse defines the MsgSubmitEnergyResponse message.
+message MsgSubmitEnergyResponse {}
+
+// MsgRecordEnergy defines the MsgRecordEnergy message.
+message MsgRecordEnergy {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  int64 amount = 2;
+  string source = 3;
+}
+
+// MsgRecordEnergyResponse defines the MsgRecordEnergyResponse message.
+message MsgRecordEnergyResponse {}

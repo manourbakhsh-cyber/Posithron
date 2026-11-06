@@ -57,6 +57,18 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Short:          "Delete energy-record",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "index"}},
 				},
+				{
+					RpcMethod:      "SubmitEnergy",
+					Use:            "submit-energy [amount] [source]",
+					Short:          "Send a submit-energy tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "amount"}, {ProtoField: "source"}},
+				},
+				{
+					RpcMethod:      "RecordEnergy",
+					Use:            "record-energy [amount] [source]",
+					Short:          "Send a record-energy tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "amount"}, {ProtoField: "source"}},
+				},
 			},
 		},
 	}
