@@ -1,11 +1,11 @@
 package app
 
 import (
-	sdkmath "cosmossdk.io/math"
 	clienthelpers "cosmossdk.io/client/v2/helpers"
 	"cosmossdk.io/core/appmodule"
 	"cosmossdk.io/depinject"
 	"cosmossdk.io/log/v2"
+	sdkmath "cosmossdk.io/math"
 	storetypes "github.com/cosmos/cosmos-sdk/store/v2/types"
 	upgradekeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 
@@ -42,6 +42,8 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v11/modules/core/keeper"
 
 	"posithron/docs"
+	aiworkmodulekeeper "posithron/x/aiwork/keeper"
+	cognitionmodulekeeper "posithron/x/cognition/keeper"
 	posithronmodulekeeper "posithron/x/posithron/keeper"
 )
 
@@ -95,6 +97,8 @@ type App struct {
 	// simulation manager
 	sm              *module.SimulationManager
 	PosithronKeeper posithronmodulekeeper.Keeper
+	AiworkKeeper    aiworkmodulekeeper.Keeper
+	CognitionKeeper cognitionmodulekeeper.Keeper
 }
 
 func init() {
@@ -172,6 +176,8 @@ func New(
 		&app.AuthzKeeper,
 		&app.ConsensusParamsKeeper,
 		&app.PosithronKeeper,
+		&app.AiworkKeeper,
+		&app.CognitionKeeper,
 	); err != nil {
 		panic(err)
 	}

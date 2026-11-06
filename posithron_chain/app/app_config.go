@@ -1,6 +1,10 @@
 package app
 
 import (
+	_ "posithron/x/aiwork/module"
+	aiworkmoduletypes "posithron/x/aiwork/types"
+	_ "posithron/x/cognition/module"
+	cognitionmoduletypes "posithron/x/cognition/types"
 	_ "posithron/x/posithron/module"
 	posithronmoduletypes "posithron/x/posithron/types"
 
@@ -69,7 +73,7 @@ var (
 		{Account: govtypes.ModuleName, Permissions: []string{authtypes.Burner}},
 		{Account: ibctransfertypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner}},
 		{Account: icatypes.ModuleName},
-	}
+		{Account: aiworkmoduletypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner, authtypes.Staking}}, {Account: cognitionmoduletypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner, authtypes.Staking}}}
 
 	// blocked account addresses
 	blockAccAddrs = []string{
@@ -109,14 +113,14 @@ var (
 						// ibc modules
 						ibcexported.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName},
 					EndBlockers: []string{
 						banktypes.ModuleName,
 						govtypes.ModuleName,
 						stakingtypes.ModuleName,
 						feegrant.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName},
 					// The following is mostly only needed when ModuleName != StoreKey name.
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
 						{
@@ -148,7 +152,7 @@ var (
 						ibctransfertypes.ModuleName,
 						icatypes.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName},
 				}),
 			},
 			{
@@ -227,6 +231,12 @@ var (
 			{
 				Name:   posithronmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&posithronmoduletypes.Module{}),
+			}, {
+				Name:   aiworkmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&aiworkmoduletypes.Module{}),
+			}, {
+				Name:   cognitionmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&cognitionmoduletypes.Module{}),
 			}},
 	})
 )

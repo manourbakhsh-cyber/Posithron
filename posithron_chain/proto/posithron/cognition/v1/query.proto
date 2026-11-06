@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package posithron.cognition.v1;
+
+import "amino/amino.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "cosmos/base/v1beta1/coin.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "posithron/cognition/v1/params.proto";
+import "posithron/cognition/v1/task_record.proto";
+
+option go_package = "posithron/x/cognition/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/posithron/cognition/v1/params";
+  }
+
+  // ListTaskRecord Queries a list of TaskRecord items.
+  rpc GetTaskRecord(QueryGetTaskRecordRequest) returns (QueryGetTaskRecordResponse) {
+    option (google.api.http).get = "/posithron/cognition/v1/task_record/{index}";
+  }
+
+  // ListTaskRecord defines the ListTaskRecord RPC.
+  rpc ListTaskRecord(QueryAllTaskRecordRequest) returns (QueryAllTaskRecordResponse) {
+    option (google.api.http).get = "/posithron/cognition/v1/task_record";
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// QueryGetTaskRecordRequest defines the QueryGetTaskRecordRequest message.
+message QueryGetTaskRecordRequest {
+  string index = 1;
+}
+
+// QueryGetTaskRecordResponse defines the QueryGetTaskRecordResponse message.
+message QueryGetTaskRecordResponse {
+  TaskRecord task_record = 1 [(gogoproto.nullable) = false];
+}
+
+// QueryAllTaskRecordRequest defines the QueryAllTaskRecordRequest message.
+message QueryAllTaskRecordRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryAllTaskRecordResponse defines the QueryAllTaskRecordResponse message.
+message QueryAllTaskRecordResponse {
+  repeated TaskRecord task_record = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
