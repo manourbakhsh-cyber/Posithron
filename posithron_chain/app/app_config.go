@@ -5,6 +5,8 @@ import (
 	aiworkmoduletypes "posithron/x/aiwork/types"
 	_ "posithron/x/cognition/module"
 	cognitionmoduletypes "posithron/x/cognition/types"
+	_ "posithron/x/entanglement/module"
+	entanglementmoduletypes "posithron/x/entanglement/types"
 	_ "posithron/x/greenenergy/module"
 	greenenergymoduletypes "posithron/x/greenenergy/types"
 	_ "posithron/x/interference/module"
@@ -117,14 +119,14 @@ var (
 						// ibc modules
 						ibcexported.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName},
 					EndBlockers: []string{
 						banktypes.ModuleName,
 						govtypes.ModuleName,
 						stakingtypes.ModuleName,
 						feegrant.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName},
 					// The following is mostly only needed when ModuleName != StoreKey name.
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
 						{
@@ -156,7 +158,7 @@ var (
 						ibctransfertypes.ModuleName,
 						icatypes.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName},
 				}),
 			},
 			{
@@ -247,6 +249,9 @@ var (
 			}, {
 				Name:   greenenergymoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&greenenergymoduletypes.Module{}),
+			}, {
+				Name:   entanglementmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&entanglementmoduletypes.Module{}),
 			}},
 	})
 )

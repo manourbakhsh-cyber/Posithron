@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package posithron.entanglement.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "posithron/entanglement/v1/pair_record.proto";
+import "posithron/entanglement/v1/params.proto";
+
+option go_package = "posithron/x/entanglement/types";
+
+// GenesisState defines the entanglement module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+  repeated PairRecord pair_record_map = 2 [(gogoproto.nullable) = false];
+}

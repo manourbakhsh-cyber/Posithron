@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package posithron.entanglement.v1;
+
+import "amino/amino.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "posithron/entanglement/v1/pair_record.proto";
+import "posithron/entanglement/v1/params.proto";
+
+option go_package = "posithron/x/entanglement/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/posithron/entanglement/v1/params";
+  }
+
+  // ListPairRecord Queries a list of PairRecord items.
+  rpc GetPairRecord(QueryGetPairRecordRequest) returns (QueryGetPairRecordResponse) {
+    option (google.api.http).get = "/posithron/entanglement/v1/pair_record/{index}";
+  }
+
+  // ListPairRecord defines the ListPairRecord RPC.
+  rpc ListPairRecord(QueryAllPairRecordRequest) returns (QueryAllPairRecordResponse) {
+    option (google.api.http).get = "/posithron/entanglement/v1/pair_record";
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// QueryGetPairRecordRequest defines the QueryGetPairRecordRequest message.
+message QueryGetPairRecordRequest {
+  string index = 1;
+}
+
+// QueryGetPairRecordResponse defines the QueryGetPairRecordResponse message.
+message QueryGetPairRecordResponse {
+  PairRecord pair_record = 1 [(gogoproto.nullable) = false];
+}
+
+// QueryAllPairRecordRequest defines the QueryAllPairRecordRequest message.
+message QueryAllPairRecordRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryAllPairRecordResponse defines the QueryAllPairRecordResponse message.
+message QueryAllPairRecordResponse {
+  repeated PairRecord pair_record = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

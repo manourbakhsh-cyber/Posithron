@@ -44,6 +44,7 @@ import (
 	"posithron/docs"
 	aiworkmodulekeeper "posithron/x/aiwork/keeper"
 	cognitionmodulekeeper "posithron/x/cognition/keeper"
+	entanglementmodulekeeper "posithron/x/entanglement/keeper"
 	greenenergymodulekeeper "posithron/x/greenenergy/keeper"
 	interferencemodulekeeper "posithron/x/interference/keeper"
 	posithronmodulekeeper "posithron/x/posithron/keeper"
@@ -103,6 +104,7 @@ type App struct {
 	CognitionKeeper    cognitionmodulekeeper.Keeper
 	InterferenceKeeper interferencemodulekeeper.Keeper
 	GreenenergyKeeper  greenenergymodulekeeper.Keeper
+	EntanglementKeeper entanglementmodulekeeper.Keeper
 }
 
 func init() {
@@ -184,6 +186,7 @@ func New(
 		&app.CognitionKeeper,
 		&app.InterferenceKeeper,
 		&app.GreenenergyKeeper,
+		&app.EntanglementKeeper,
 	); err != nil {
 		panic(err)
 	}

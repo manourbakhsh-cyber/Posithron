@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package posithron.entanglement.v1;
+
+import "amino/amino.proto";
+import "cosmos/msg/v1/msg.proto";
+import "cosmos_proto/cosmos.proto";
+import "gogoproto/gogo.proto";
+import "posithron/entanglement/v1/params.proto";
+
+option go_package = "posithron/x/entanglement/types";
+
+// Msg defines the Msg service.
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+
+  // UpdateParams defines a (governance) operation for updating the module
+  // parameters. The authority defaults to the x/gov module account.
+  rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+
+  // CreatePairRecord defines the CreatePairRecord RPC.
+  rpc CreatePairRecord(MsgCreatePairRecord) returns (MsgCreatePairRecordResponse);
+
+  // UpdatePairRecord defines the UpdatePairRecord RPC.
+  rpc UpdatePairRecord(MsgUpdatePairRecord) returns (MsgUpdatePairRecordResponse);
+
+  // DeletePairRecord defines the DeletePairRecord RPC.
+  rpc DeletePairRecord(MsgDeletePairRecord) returns (MsgDeletePairRecordResponse);
+
+  // EntangleNodes defines the EntangleNodes RPC.
+  rpc EntangleNodes(MsgEntangleNodes) returns (MsgEntangleNodesResponse);
+}
+// MsgUpdateParams is the Msg/UpdateParams request type.
+message MsgUpdateParams {
+  option (cosmos.msg.v1.signer) = "authority";
+  option (amino.name) = "posithron/x/entanglement/MsgUpdateParams";
+
+  // authority is the address that controls the module (defaults to x/gov unless overwritten).
+  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+
+  // params defines the module parameters to update.
+
+  // NOTE: All parameters must be supplied.
+  Params params = 2 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// MsgUpdateParamsResponse defines the response structure for executing a
+// MsgUpdateParams message.
+message MsgUpdateParamsResponse {}
+
+// MsgCreatePairRecord defines the MsgCreatePairRecord message.
+message MsgCreatePairRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+  string ai_node = 3;
+  string energy_node = 4;
+  string status = 5;
+}
+
+// MsgCreatePairRecordResponse defines the MsgCreatePairRecordResponse message.
+message MsgCreatePairRecordResponse {}
+
+// MsgUpdatePairRecord defines the MsgUpdatePairRecord message.
+message MsgUpdatePairRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+  string ai_node = 3;
+  string energy_node = 4;
+  string status = 5;
+}
+
+// MsgUpdatePairRecordResponse defines the MsgUpdatePairRecordResponse message.
+message MsgUpdatePairRecordResponse {}
+
+// MsgDeletePairRecord defines the MsgDeletePairRecord message.
+message MsgDeletePairRecord {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string index = 2;
+}
+
+// MsgDeletePairRecordResponse defines the MsgDeletePairRecordResponse message.
+message MsgDeletePairRecordResponse {}
+
+// MsgEntangleNodes defines the MsgEntangleNodes message.
+message MsgEntangleNodes {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string ai_node = 2;
+  string energy_node = 3;
+}
+
+// MsgEntangleNodesResponse defines the MsgEntangleNodesResponse message.
+message MsgEntangleNodesResponse {}

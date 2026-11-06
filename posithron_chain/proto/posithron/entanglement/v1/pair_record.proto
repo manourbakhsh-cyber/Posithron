@@ -1,0 +1,13 @@
+syntax = "proto3";
+package posithron.entanglement.v1;
+
+option go_package = "posithron/x/entanglement/types";
+
+// PairRecord defines the PairRecord message.
+message PairRecord {
+  string index = 1;
+  string ai_node = 2;
+  string energy_node = 3;
+  string status = 4;
+  string creator = 5;
+}
