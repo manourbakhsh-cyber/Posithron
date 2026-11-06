@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	"posithron/x/casimir/types"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 func (k msgServer) ClaimCasimir(goCtx context.Context, msg *types.MsgClaimCasimir) (*types.MsgClaimCasimirResponse, error) {

@@ -1,0 +1,13 @@
+syntax = "proto3";
+package posithron.heisenberg.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "posithron/x/heisenberg/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "posithron/x/heisenberg/Params";
+  option (gogoproto.equal) = true;
+}

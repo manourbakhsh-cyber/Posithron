@@ -13,6 +13,8 @@ import (
 	greenenergymoduletypes "posithron/x/greenenergy/types"
 	_ "posithron/x/hawking/module"
 	hawkingmoduletypes "posithron/x/hawking/types"
+	_ "posithron/x/heisenberg/module"
+	heisenbergmoduletypes "posithron/x/heisenberg/types"
 	_ "posithron/x/interference/module"
 	interferencemoduletypes "posithron/x/interference/types"
 	_ "posithron/x/posithron/module"
@@ -125,14 +127,14 @@ var (
 						// ibc modules
 						ibcexported.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName, hawkingmoduletypes.ModuleName, casimirmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName, hawkingmoduletypes.ModuleName, casimirmoduletypes.ModuleName, heisenbergmoduletypes.ModuleName},
 					EndBlockers: []string{
 						banktypes.ModuleName,
 						govtypes.ModuleName,
 						stakingtypes.ModuleName,
 						feegrant.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName, hawkingmoduletypes.ModuleName, casimirmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName, hawkingmoduletypes.ModuleName, casimirmoduletypes.ModuleName, heisenbergmoduletypes.ModuleName},
 					// The following is mostly only needed when ModuleName != StoreKey name.
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
 						{
@@ -164,7 +166,7 @@ var (
 						ibctransfertypes.ModuleName,
 						icatypes.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName, hawkingmoduletypes.ModuleName, casimirmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName, greenenergymoduletypes.ModuleName, entanglementmoduletypes.ModuleName, qrngmoduletypes.ModuleName, hawkingmoduletypes.ModuleName, casimirmoduletypes.ModuleName, heisenbergmoduletypes.ModuleName},
 				}),
 			},
 			{
@@ -267,6 +269,9 @@ var (
 			}, {
 				Name:   casimirmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&casimirmoduletypes.Module{}),
+			}, {
+				Name:   heisenbergmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&heisenbergmoduletypes.Module{}),
 			}},
 	})
 )
