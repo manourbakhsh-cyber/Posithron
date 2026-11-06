@@ -9,20 +9,19 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 
 	"posithron/x/cognition/types"
+	greenenergykeeper "posithron/x/greenenergy/keeper"
 )
 
 type Keeper struct {
-	storeService corestore.KVStoreService
-	cdc          codec.Codec
-	addressCodec address.Codec
-	// Address capable of executing a MsgUpdateParams message.
-	// Typically, this should be the x/gov module account.
-	authority []byte
+	storeService      corestore.KVStoreService
+	cdc               codec.Codec
+	addressCodec      address.Codec
+	authority         []byte
+	bankKeeper        types.BankKeeper
+	greenEnergyKeeper greenenergykeeper.Keeper
 
-	Schema collections.Schema
-	Params collections.Item[types.Params]
-
-	bankKeeper types.BankKeeper
+	Schema     collections.Schema
+	Params     collections.Item[types.Params]
 	TaskRecord collections.Map[string, types.TaskRecord]
 }
 
@@ -31,8 +30,8 @@ func NewKeeper(
 	cdc codec.Codec,
 	addressCodec address.Codec,
 	authority []byte,
-
 	bankKeeper types.BankKeeper,
+	greenEnergyKeeper greenenergykeeper.Keeper,
 ) Keeper {
 	if _, err := addressCodec.BytesToString(authority); err != nil {
 		panic(fmt.Sprintf("invalid authority address %s: %s", authority, err))
@@ -41,14 +40,16 @@ func NewKeeper(
 	sb := collections.NewSchemaBuilder(storeService)
 
 	k := Keeper{
-		storeService: storeService,
-		cdc:          cdc,
-		addressCodec: addressCodec,
-		authority:    authority,
+		storeService:      storeService,
+		cdc:               cdc,
+		addressCodec:      addressCodec,
+		authority:         authority,
+		bankKeeper:        bankKeeper,
+		greenEnergyKeeper: greenEnergyKeeper,
 
-		bankKeeper: bankKeeper,
 		Params:     collections.NewItem(sb, types.ParamsKey, "params", codec.CollValue[types.Params](cdc)),
-		TaskRecord: collections.NewMap(sb, types.TaskRecordKey, "taskRecord", collections.StringKey, codec.CollValue[types.TaskRecord](cdc))}
+		TaskRecord: collections.NewMap(sb, types.TaskRecordKey, "taskRecord", collections.StringKey, codec.CollValue[types.TaskRecord](cdc)),
+	}
 
 	schema, err := sb.Build()
 	if err != nil {
@@ -59,7 +60,6 @@ func NewKeeper(
 	return k
 }
 
-// GetAuthority returns the module's authority.
 func (k Keeper) GetAuthority() []byte {
 	return k.authority
 }

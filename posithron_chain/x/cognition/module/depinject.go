@@ -11,11 +11,11 @@ import (
 
 	"posithron/x/cognition/keeper"
 	"posithron/x/cognition/types"
+	greenenergykeeper "posithron/x/greenenergy/keeper"
 )
 
 var _ depinject.OnePerModuleType = AppModule{}
 
-// IsOnePerModuleType implements the depinject.OnePerModuleType interface.
 func (AppModule) IsOnePerModuleType() {}
 
 func init() {
@@ -28,13 +28,14 @@ func init() {
 type ModuleInputs struct {
 	depinject.In
 
-	Config       *types.Module
-	StoreService store.KVStoreService
-	Cdc          codec.Codec
-	AddressCodec address.Codec
+	Config            *types.Module
+	StoreService      store.KVStoreService
+	Cdc               codec.Codec
+	AddressCodec      address.Codec
 
-	AuthKeeper types.AuthKeeper
-	BankKeeper types.BankKeeper
+	AuthKeeper        types.AuthKeeper
+	BankKeeper        types.BankKeeper
+	GreenEnergyKeeper greenenergykeeper.Keeper
 }
 
 type ModuleOutputs struct {
@@ -56,6 +57,7 @@ func ProvideModule(in ModuleInputs) ModuleOutputs {
 		in.AddressCodec,
 		authority,
 		in.BankKeeper,
+		in.GreenEnergyKeeper,
 	)
 	m := NewAppModule(in.Cdc, k, in.AuthKeeper, in.BankKeeper)
 
