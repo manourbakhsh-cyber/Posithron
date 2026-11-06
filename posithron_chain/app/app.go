@@ -52,6 +52,7 @@ import (
 	interferencemodulekeeper "posithron/x/interference/keeper"
 	posithronmodulekeeper "posithron/x/posithron/keeper"
 	qrngmodulekeeper "posithron/x/qrng/keeper"
+	tunnelingmodulekeeper "posithron/x/tunneling/keeper"
 )
 
 const (
@@ -113,6 +114,7 @@ type App struct {
 	HawkingKeeper      hawkingmodulekeeper.Keeper
 	CasimirKeeper      casimirmodulekeeper.Keeper
 	HeisenbergKeeper   heisenbergmodulekeeper.Keeper
+	TunnelingKeeper    tunnelingmodulekeeper.Keeper
 }
 
 func init() {
@@ -199,6 +201,7 @@ func New(
 		&app.HawkingKeeper,
 		&app.CasimirKeeper,
 		&app.HeisenbergKeeper,
+		&app.TunnelingKeeper,
 	); err != nil {
 		panic(err)
 	}

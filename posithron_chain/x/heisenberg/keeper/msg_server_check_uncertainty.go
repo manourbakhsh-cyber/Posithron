@@ -1,10 +1,12 @@
 package keeper
 
-import (		"context"
-		"fmt"
+import (
+	"context"
+	"fmt"
+
+	"posithron/x/heisenberg/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"posithron/x/heisenberg/types"
 )
 
 func (k msgServer) CheckUncertainty(goCtx context.Context, msg *types.MsgCheckUncertainty) (*types.MsgCheckUncertaintyResponse, error) {
