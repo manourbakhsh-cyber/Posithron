@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package posithron.hawking.v1;
+
+import "amino/amino.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "posithron/hawking/v1/node_record.proto";
+import "posithron/hawking/v1/params.proto";
+
+option go_package = "posithron/x/hawking/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/posithron/hawking/v1/params";
+  }
+
+  // ListNodeRecord Queries a list of NodeRecord items.
+  rpc GetNodeRecord(QueryGetNodeRecordRequest) returns (QueryGetNodeRecordResponse) {
+    option (google.api.http).get = "/posithron/hawking/v1/node_record/{index}";
+  }
+
+  // ListNodeRecord defines the ListNodeRecord RPC.
+  rpc ListNodeRecord(QueryAllNodeRecordRequest) returns (QueryAllNodeRecordResponse) {
+    option (google.api.http).get = "/posithron/hawking/v1/node_record";
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// QueryGetNodeRecordRequest defines the QueryGetNodeRecordRequest message.
+message QueryGetNodeRecordRequest {
+  string index = 1;
+}
+
+// QueryGetNodeRecordResponse defines the QueryGetNodeRecordResponse message.
+message QueryGetNodeRecordResponse {
+  NodeRecord node_record = 1 [(gogoproto.nullable) = false];
+}
+
+// QueryAllNodeRecordRequest defines the QueryAllNodeRecordRequest message.
+message QueryAllNodeRecordRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryAllNodeRecordResponse defines the QueryAllNodeRecordResponse message.
+message QueryAllNodeRecordResponse {
+  repeated NodeRecord node_record = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

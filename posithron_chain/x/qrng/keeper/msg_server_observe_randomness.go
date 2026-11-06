@@ -1,12 +1,13 @@
 package keeper
 
-import (		"context"
-		"crypto/sha256"
-		"fmt"
+import (
+	"context"
+	"crypto/sha256"
+	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-    "posithron/x/qrng/types"
+	"posithron/x/qrng/types"
 )
 
 func (k msgServer) ObserveRandomness(goCtx context.Context, msg *types.MsgObserveRandomness) (*types.MsgObserveRandomnessResponse, error) {

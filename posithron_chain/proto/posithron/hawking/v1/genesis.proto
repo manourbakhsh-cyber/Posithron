@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package posithron.hawking.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "posithron/hawking/v1/node_record.proto";
+import "posithron/hawking/v1/params.proto";
+
+option go_package = "posithron/x/hawking/types";
+
+// GenesisState defines the hawking module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+  repeated NodeRecord node_record_map = 2 [(gogoproto.nullable) = false];
+}

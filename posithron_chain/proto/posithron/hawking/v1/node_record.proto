@@ -1,0 +1,11 @@
+syntax = "proto3";
+package posithron.hawking.v1;
+
+option go_package = "posithron/x/hawking/types";
+
+// NodeRecord defines the NodeRecord message.
+message NodeRecord {
+  string index = 1;
+  int64 stake_amount = 2;
+  string creator = 3;
+}
