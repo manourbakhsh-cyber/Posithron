@@ -44,6 +44,7 @@ import (
 	"posithron/docs"
 	aiworkmodulekeeper "posithron/x/aiwork/keeper"
 	cognitionmodulekeeper "posithron/x/cognition/keeper"
+	interferencemodulekeeper "posithron/x/interference/keeper"
 	posithronmodulekeeper "posithron/x/posithron/keeper"
 )
 
@@ -95,10 +96,11 @@ type App struct {
 	TransferKeeper      *ibctransferkeeper.Keeper
 
 	// simulation manager
-	sm              *module.SimulationManager
-	PosithronKeeper posithronmodulekeeper.Keeper
-	AiworkKeeper    aiworkmodulekeeper.Keeper
-	CognitionKeeper cognitionmodulekeeper.Keeper
+	sm                 *module.SimulationManager
+	PosithronKeeper    posithronmodulekeeper.Keeper
+	AiworkKeeper       aiworkmodulekeeper.Keeper
+	CognitionKeeper    cognitionmodulekeeper.Keeper
+	InterferenceKeeper interferencemodulekeeper.Keeper
 }
 
 func init() {
@@ -178,6 +180,7 @@ func New(
 		&app.PosithronKeeper,
 		&app.AiworkKeeper,
 		&app.CognitionKeeper,
+		&app.InterferenceKeeper,
 	); err != nil {
 		panic(err)
 	}

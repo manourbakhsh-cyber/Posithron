@@ -1,10 +1,12 @@
 package keeper
 
-import (		"context"
-		"fmt"
+import (
+	"context"
+	"fmt"
+
+	"posithron/x/cognition/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"posithron/x/cognition/types"
 )
 
 func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResult) (*types.MsgSubmitResultResponse, error) {

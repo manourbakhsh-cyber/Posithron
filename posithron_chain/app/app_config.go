@@ -5,6 +5,8 @@ import (
 	aiworkmoduletypes "posithron/x/aiwork/types"
 	_ "posithron/x/cognition/module"
 	cognitionmoduletypes "posithron/x/cognition/types"
+	_ "posithron/x/interference/module"
+	interferencemoduletypes "posithron/x/interference/types"
 	_ "posithron/x/posithron/module"
 	posithronmoduletypes "posithron/x/posithron/types"
 
@@ -113,14 +115,14 @@ var (
 						// ibc modules
 						ibcexported.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName},
 					EndBlockers: []string{
 						banktypes.ModuleName,
 						govtypes.ModuleName,
 						stakingtypes.ModuleName,
 						feegrant.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName},
 					// The following is mostly only needed when ModuleName != StoreKey name.
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
 						{
@@ -152,7 +154,7 @@ var (
 						ibctransfertypes.ModuleName,
 						icatypes.ModuleName,
 						// chain modules
-						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName},
+						posithronmoduletypes.ModuleName, aiworkmoduletypes.ModuleName, cognitionmoduletypes.ModuleName, interferencemoduletypes.ModuleName},
 				}),
 			},
 			{
@@ -237,6 +239,9 @@ var (
 			}, {
 				Name:   cognitionmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&cognitionmoduletypes.Module{}),
+			}, {
+				Name:   interferencemoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&interferencemoduletypes.Module{}),
 			}},
 	})
 )
