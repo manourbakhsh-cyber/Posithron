@@ -144,7 +144,7 @@
     </div>
   </div>
 
-  <div class="section-title">📦 Recent Blocks <span class="quantum-tag" id="rate-tag">—</span></div>
+  <div class="section-title">📦 Recent Blocks <span class="quantum-tag" id="rate-tag">~1 block / 5s</span></div>
   <div class="blocks-feed" id="blocks-feed">
     <div class="empty-state">Waiting for block data...</div>
   </div>
@@ -159,14 +159,12 @@
 </div>
 
 <script>
-  // ⚙️ CONFIGURATION — change this URL to point to your own node
- const RPC_URL = "https://automatic-rotary-phone-vp5677p5w4xqhx6pr-26657.app.github.dev";
+  // ✅ آدرس دقیق و تایید شده RPC
+  const RPC_URL = "https://automatic-rotary-phone-vp5677p5w4xqhx6pr-26657.app.github.dev";
   
   const seenBlocks = [];
   let lastHeight = 0;
-  let lastBlockTime = null;
   let startTime = null;
-  let pollCount = 0;
 
   async function fetchStatus() {
     try {
@@ -232,7 +230,6 @@
   }
 
   async function tick() {
-    pollCount++;
     const status = await fetchStatus();
     updateStatus(status);
 
@@ -242,30 +239,23 @@
     const node = status.node_info;
     const height = parseInt(sync.latest_block_height);
 
-    // Block height
     if (height !== lastHeight) {
       document.getElementById('block-height').textContent = height.toLocaleString();
       lastHeight = height;
     }
 
-    // Network info
     document.getElementById('network').textContent = node.network;
     document.getElementById('moniker').textContent = node.moniker;
-
-    // Latest hash
     document.getElementById('latest-hash').textContent = sync.latest_block_hash.substring(0, 16) + '...';
 
-    // Uptime
     if (!startTime && sync.earliest_block_time) {
       startTime = new Date(sync.earliest_block_time).getTime();
     }
     if (startTime) {
       const now = new Date(sync.latest_block_time).getTime();
-      const uptimeSec = (now - startTime) / 1000;
-      document.getElementById('uptime').textContent = formatUptime(uptimeSec);
+      document.getElementById('uptime').textContent = formatUptime((now - startTime) / 1000);
     }
 
-    // Fetch latest block if new
     if (height > 0 && (!seenBlocks[0] || seenBlocks[0].height !== height)) {
       const block = await fetchBlock(height);
       if (block) {
@@ -279,15 +269,8 @@
         renderBlocks();
       }
     }
-
-    // Block rate calculation (blocks per minute)
-    if (pollCount > 1 && lastBlockTime) {
-      // approximate — just show block speed
-    }
-    document.getElementById('rate-tag').textContent = `~1 block / 5s`;
   }
 
-  // Initial tick + polling every 5 seconds
   tick();
   setInterval(tick, 5000);
 </script>
