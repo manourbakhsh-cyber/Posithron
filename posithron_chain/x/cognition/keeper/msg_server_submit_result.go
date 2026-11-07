@@ -10,6 +10,7 @@ import (
 	"posithron/x/cognition/types"
 	entanglementtypes "posithron/x/entanglement/types"
 	greenenergytypes "posithron/x/greenenergy/types"
+	tunnelingtypes "posithron/x/tunneling/types"
 )
 
 func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResult) (*types.MsgSubmitResultResponse, error) {
@@ -66,7 +67,25 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 	interference := 2.0 * math.Sqrt(aiEffective*energyEffective) * math.Cos(rad)
 	rewardInt := int64(interference * 1000)
 
-	// 7. Emit event with full quantum details
+	// 7. TUNNELING BONUS: If agent's trust score >= 50, apply +10% bonus
+	var trustScore int64 = 0
+	var trustFound bool = false
+	_ = k.tunnelingKeeper.TrustRecord.Walk(ctx, nil, func(key string, value tunnelingtypes.TrustRecord) (bool, error) {
+		if value.Creator == msg.Creator {
+			trustScore = value.Score
+			trustFound = true
+			return true, nil // Stop iteration
+		}
+		return false, nil
+	})
+
+	tunnelBonusApplied := false
+	if trustFound && trustScore >= 50 {
+		rewardInt = int64(float64(rewardInt) * 1.10) // +10% bonus
+		tunnelBonusApplied = true
+	}
+
+	// 8. Emit event with full quantum details
 	ctx.EventManager().EmitEvent(
 		sdk.NewEvent(
 			"task_completed_with_quantum_reward",
@@ -75,18 +94,20 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 			sdk.NewAttribute("quantum_phase_deg", fmt.Sprintf("%.0f", phase)),
 			sdk.NewAttribute("ai_effective", fmt.Sprintf("%.0f", aiEffective)),
 			sdk.NewAttribute("energy_effective", fmt.Sprintf("%.0f", energyEffective)),
+			sdk.NewAttribute("trust_score", fmt.Sprintf("%d", trustScore)),
+			sdk.NewAttribute("tunnel_bonus_applied", fmt.Sprintf("%t", tunnelBonusApplied)),
 			sdk.NewAttribute("quantum_reward_x1000", fmt.Sprintf("%d", rewardInt)),
 		),
 	)
 
-	// 8. Check for Entanglement to split bounty
+	// 9. Check for Entanglement to split bounty
 	var energyNodeAddr sdk.AccAddress
 	err = k.entanglementKeeper.PairRecord.Walk(ctx, nil, func(key string, value entanglementtypes.PairRecord) (bool, error) {
 		if (value.AiNode == msg.Creator || value.Creator == msg.Creator) && value.Status == "entangled" {
 			addr, err := sdk.AccAddressFromBech32(value.EnergyNode)
 			if err == nil && len(addr) > 0 {
 				energyNodeAddr = addr
-				return true, nil // Stop iteration
+				return true, nil
 			}
 		}
 		return false, nil
@@ -95,7 +116,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		return nil, err
 	}
 
-	// 9. Transfer Bounty
+	// 10. Transfer Bounty
 	creatorAddr, err := sdk.AccAddressFromBech32(task.Creator)
 	if err != nil {
 		return nil, fmt.Errorf("Invalid creator address: %s", err)
@@ -135,14 +156,13 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 				),
 			)
 		} else {
-			// Normal full transfer
 			if err := k.bankKeeper.SendCoins(ctx, creatorAddr, agentAddr, coins); err != nil {
 				return nil, fmt.Errorf("Failed to transfer bounty: %s", err)
 			}
 		}
 	}
 
-	// 10. Update task status
+	// 11. Update task status
 	task.Status = "completed"
 	if err := k.TaskRecord.Set(ctx, task.Index, task); err != nil {
 		return nil, err

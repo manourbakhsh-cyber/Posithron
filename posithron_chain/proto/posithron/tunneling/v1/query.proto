@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package posithron.tunneling.v1;
 
 import "amino/amino.proto";
@@ -6,6 +7,7 @@ import "cosmos/base/query/v1beta1/pagination.proto";
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "posithron/tunneling/v1/params.proto";
+import "posithron/tunneling/v1/trust_record.proto";
 
 option go_package = "posithron/x/tunneling/types";
 
@@ -15,8 +17,17 @@ service Query {
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/posithron/tunneling/v1/params";
   }
-}
 
+  // ListTrustRecord Queries a list of TrustRecord items.
+  rpc GetTrustRecord(QueryGetTrustRecordRequest) returns (QueryGetTrustRecordResponse) {
+    option (google.api.http).get = "/posithron/tunneling/v1/trust_record/{index}";
+  }
+
+  // ListTrustRecord defines the ListTrustRecord RPC.
+  rpc ListTrustRecord(QueryAllTrustRecordRequest) returns (QueryAllTrustRecordResponse) {
+    option (google.api.http).get = "/posithron/tunneling/v1/trust_record";
+  }
+}
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
@@ -27,4 +38,25 @@ message QueryParamsResponse {
     (gogoproto.nullable) = false,
     (amino.dont_omitempty) = true
   ];
+}
+
+// QueryGetTrustRecordRequest defines the QueryGetTrustRecordRequest message.
+message QueryGetTrustRecordRequest {
+  string index = 1;
+}
+
+// QueryGetTrustRecordResponse defines the QueryGetTrustRecordResponse message.
+message QueryGetTrustRecordResponse {
+  TrustRecord trust_record = 1 [(gogoproto.nullable) = false];
+}
+
+// QueryAllTrustRecordRequest defines the QueryAllTrustRecordRequest message.
+message QueryAllTrustRecordRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryAllTrustRecordResponse defines the QueryAllTrustRecordResponse message.
+message QueryAllTrustRecordResponse {
+  repeated TrustRecord trust_record = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }

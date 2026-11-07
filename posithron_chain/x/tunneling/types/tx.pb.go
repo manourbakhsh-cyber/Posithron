@@ -223,45 +223,344 @@ func (m *MsgCheckTunnelResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgCheckTunnelResponse proto.InternalMessageInfo
 
+// MsgCreateTrustRecord defines the MsgCreateTrustRecord message.
+type MsgCreateTrustRecord struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+	Score   int64  `protobuf:"varint,3,opt,name=score,proto3" json:"score,omitempty"`
+}
+
+func (m *MsgCreateTrustRecord) Reset()         { *m = MsgCreateTrustRecord{} }
+func (m *MsgCreateTrustRecord) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateTrustRecord) ProtoMessage()    {}
+func (*MsgCreateTrustRecord) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9f8b86727898a5ed, []int{4}
+}
+func (m *MsgCreateTrustRecord) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateTrustRecord) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateTrustRecord.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateTrustRecord) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateTrustRecord.Merge(m, src)
+}
+func (m *MsgCreateTrustRecord) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateTrustRecord) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateTrustRecord.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateTrustRecord proto.InternalMessageInfo
+
+func (m *MsgCreateTrustRecord) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateTrustRecord) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+func (m *MsgCreateTrustRecord) GetScore() int64 {
+	if m != nil {
+		return m.Score
+	}
+	return 0
+}
+
+// MsgCreateTrustRecordResponse defines the MsgCreateTrustRecordResponse message.
+type MsgCreateTrustRecordResponse struct {
+}
+
+func (m *MsgCreateTrustRecordResponse) Reset()         { *m = MsgCreateTrustRecordResponse{} }
+func (m *MsgCreateTrustRecordResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateTrustRecordResponse) ProtoMessage()    {}
+func (*MsgCreateTrustRecordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9f8b86727898a5ed, []int{5}
+}
+func (m *MsgCreateTrustRecordResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateTrustRecordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateTrustRecordResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateTrustRecordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateTrustRecordResponse.Merge(m, src)
+}
+func (m *MsgCreateTrustRecordResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateTrustRecordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateTrustRecordResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateTrustRecordResponse proto.InternalMessageInfo
+
+// MsgUpdateTrustRecord defines the MsgUpdateTrustRecord message.
+type MsgUpdateTrustRecord struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+	Score   int64  `protobuf:"varint,3,opt,name=score,proto3" json:"score,omitempty"`
+}
+
+func (m *MsgUpdateTrustRecord) Reset()         { *m = MsgUpdateTrustRecord{} }
+func (m *MsgUpdateTrustRecord) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateTrustRecord) ProtoMessage()    {}
+func (*MsgUpdateTrustRecord) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9f8b86727898a5ed, []int{6}
+}
+func (m *MsgUpdateTrustRecord) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateTrustRecord) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateTrustRecord.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateTrustRecord) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateTrustRecord.Merge(m, src)
+}
+func (m *MsgUpdateTrustRecord) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateTrustRecord) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateTrustRecord.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateTrustRecord proto.InternalMessageInfo
+
+func (m *MsgUpdateTrustRecord) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateTrustRecord) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+func (m *MsgUpdateTrustRecord) GetScore() int64 {
+	if m != nil {
+		return m.Score
+	}
+	return 0
+}
+
+// MsgUpdateTrustRecordResponse defines the MsgUpdateTrustRecordResponse message.
+type MsgUpdateTrustRecordResponse struct {
+}
+
+func (m *MsgUpdateTrustRecordResponse) Reset()         { *m = MsgUpdateTrustRecordResponse{} }
+func (m *MsgUpdateTrustRecordResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateTrustRecordResponse) ProtoMessage()    {}
+func (*MsgUpdateTrustRecordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9f8b86727898a5ed, []int{7}
+}
+func (m *MsgUpdateTrustRecordResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateTrustRecordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateTrustRecordResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateTrustRecordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateTrustRecordResponse.Merge(m, src)
+}
+func (m *MsgUpdateTrustRecordResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateTrustRecordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateTrustRecordResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateTrustRecordResponse proto.InternalMessageInfo
+
+// MsgDeleteTrustRecord defines the MsgDeleteTrustRecord message.
+type MsgDeleteTrustRecord struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *MsgDeleteTrustRecord) Reset()         { *m = MsgDeleteTrustRecord{} }
+func (m *MsgDeleteTrustRecord) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteTrustRecord) ProtoMessage()    {}
+func (*MsgDeleteTrustRecord) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9f8b86727898a5ed, []int{8}
+}
+func (m *MsgDeleteTrustRecord) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteTrustRecord) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteTrustRecord.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteTrustRecord) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteTrustRecord.Merge(m, src)
+}
+func (m *MsgDeleteTrustRecord) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteTrustRecord) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteTrustRecord.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteTrustRecord proto.InternalMessageInfo
+
+func (m *MsgDeleteTrustRecord) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteTrustRecord) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+// MsgDeleteTrustRecordResponse defines the MsgDeleteTrustRecordResponse message.
+type MsgDeleteTrustRecordResponse struct {
+}
+
+func (m *MsgDeleteTrustRecordResponse) Reset()         { *m = MsgDeleteTrustRecordResponse{} }
+func (m *MsgDeleteTrustRecordResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteTrustRecordResponse) ProtoMessage()    {}
+func (*MsgDeleteTrustRecordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9f8b86727898a5ed, []int{9}
+}
+func (m *MsgDeleteTrustRecordResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteTrustRecordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteTrustRecordResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteTrustRecordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteTrustRecordResponse.Merge(m, src)
+}
+func (m *MsgDeleteTrustRecordResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteTrustRecordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteTrustRecordResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteTrustRecordResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgUpdateParams)(nil), "posithron.tunneling.v1.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "posithron.tunneling.v1.MsgUpdateParamsResponse")
 	proto.RegisterType((*MsgCheckTunnel)(nil), "posithron.tunneling.v1.MsgCheckTunnel")
 	proto.RegisterType((*MsgCheckTunnelResponse)(nil), "posithron.tunneling.v1.MsgCheckTunnelResponse")
+	proto.RegisterType((*MsgCreateTrustRecord)(nil), "posithron.tunneling.v1.MsgCreateTrustRecord")
+	proto.RegisterType((*MsgCreateTrustRecordResponse)(nil), "posithron.tunneling.v1.MsgCreateTrustRecordResponse")
+	proto.RegisterType((*MsgUpdateTrustRecord)(nil), "posithron.tunneling.v1.MsgUpdateTrustRecord")
+	proto.RegisterType((*MsgUpdateTrustRecordResponse)(nil), "posithron.tunneling.v1.MsgUpdateTrustRecordResponse")
+	proto.RegisterType((*MsgDeleteTrustRecord)(nil), "posithron.tunneling.v1.MsgDeleteTrustRecord")
+	proto.RegisterType((*MsgDeleteTrustRecordResponse)(nil), "posithron.tunneling.v1.MsgDeleteTrustRecordResponse")
 }
 
 func init() { proto.RegisterFile("posithron/tunneling/v1/tx.proto", fileDescriptor_9f8b86727898a5ed) }
 
 var fileDescriptor_9f8b86727898a5ed = []byte{
-	// 442 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0x4d, 0x8b, 0xd3, 0x40,
-	0x18, 0xc7, 0x33, 0x16, 0x57, 0x3a, 0x5d, 0x57, 0x1c, 0x96, 0xdd, 0x6c, 0x84, 0x74, 0x89, 0x54,
-	0x4b, 0xc1, 0x84, 0x56, 0x14, 0xe9, 0xad, 0xf5, 0x5c, 0x90, 0x54, 0x2f, 0x5e, 0x4a, 0x4c, 0x86,
-	0x49, 0xd0, 0x64, 0xe2, 0xcc, 0xa4, 0xb4, 0x37, 0xf1, 0xe8, 0xc9, 0xb3, 0x9f, 0xc0, 0x63, 0x0f,
-	0x7e, 0x06, 0xe9, 0xb1, 0x78, 0xf2, 0xa2, 0x48, 0x7b, 0xe8, 0xd7, 0x90, 0x4c, 0x92, 0xbe, 0xd1,
-	0x6a, 0x2f, 0x21, 0xf3, 0x7f, 0x7e, 0xcf, 0xcb, 0x7f, 0x9e, 0x81, 0xd5, 0x98, 0xf2, 0x40, 0xf8,
-	0x8c, 0x46, 0x96, 0x48, 0xa2, 0x08, 0xbf, 0x0b, 0x22, 0x62, 0x0d, 0x9b, 0x96, 0x18, 0x99, 0x31,
-	0xa3, 0x82, 0xa2, 0x8b, 0x15, 0x60, 0xae, 0x00, 0x73, 0xd8, 0xd4, 0xee, 0x3a, 0x61, 0x10, 0x51,
-	0x4b, 0x7e, 0x33, 0x54, 0xbb, 0x74, 0x29, 0x0f, 0x29, 0xb7, 0x42, 0x2e, 0x4b, 0x84, 0x9c, 0xe4,
-	0x81, 0xab, 0x2c, 0x30, 0x90, 0x27, 0x2b, 0x3b, 0xe4, 0xa1, 0x73, 0x42, 0x09, 0xcd, 0xf4, 0xf4,
-	0x2f, 0x57, 0xef, 0x1f, 0x98, 0x2a, 0x76, 0x98, 0x13, 0xe6, 0xa9, 0xc6, 0x77, 0x00, 0xef, 0xf4,
-	0x38, 0x79, 0x15, 0x7b, 0x8e, 0xc0, 0x2f, 0x64, 0x04, 0x3d, 0x85, 0x65, 0x27, 0x11, 0x3e, 0x65,
-	0x81, 0x18, 0xab, 0xe0, 0x1a, 0xd4, 0xcb, 0x5d, 0xf5, 0xc7, 0xb7, 0x47, 0xe7, 0x79, 0xcf, 0x8e,
-	0xe7, 0x31, 0xcc, 0x79, 0x5f, 0xb0, 0x20, 0x22, 0xf6, 0x1a, 0x45, 0x1d, 0x78, 0x92, 0xd5, 0x56,
-	0x6f, 0x5c, 0x83, 0x7a, 0xa5, 0xa5, 0x9b, 0xfb, 0x6d, 0x9b, 0x59, 0x9f, 0x6e, 0x79, 0xfa, 0xbb,
-	0xaa, 0x7c, 0x5d, 0x4e, 0x1a, 0xc0, 0xce, 0x13, 0xdb, 0xcf, 0x3e, 0x2e, 0x27, 0x8d, 0x75, 0xc9,
-	0x4f, 0xcb, 0x49, 0xa3, 0xb6, 0xb6, 0x31, 0xda, 0x30, 0xb2, 0x33, 0xb4, 0x71, 0x05, 0x2f, 0x77,
-	0x24, 0x1b, 0xf3, 0x98, 0x46, 0x1c, 0x1b, 0x5f, 0x00, 0x3c, 0xeb, 0x71, 0xf2, 0xdc, 0xc7, 0xee,
-	0xdb, 0x97, 0xb2, 0x00, 0x6a, 0xc1, 0x5b, 0x2e, 0xc3, 0x8e, 0xa0, 0xec, 0xbf, 0x06, 0x0b, 0x10,
-	0x55, 0x61, 0x45, 0xb0, 0x84, 0x8b, 0x01, 0x77, 0x29, 0xc3, 0xd2, 0x63, 0xc9, 0x86, 0x52, 0xea,
-	0xa7, 0x0a, 0xaa, 0xc1, 0x33, 0x86, 0xdf, 0x27, 0x01, 0xc3, 0x5e, 0xce, 0x94, 0x24, 0x73, 0xbb,
-	0x50, 0x25, 0xd6, 0x3e, 0x4d, 0x3d, 0x16, 0x55, 0x0d, 0x15, 0x5e, 0x6c, 0xcf, 0x56, 0x8c, 0xdd,
-	0xfa, 0x05, 0x60, 0xa9, 0xc7, 0x09, 0xf2, 0xe1, 0xe9, 0xd6, 0x7a, 0x1e, 0x1e, 0xba, 0xd6, 0x1d,
-	0xff, 0x9a, 0x75, 0x24, 0x58, 0x74, 0x44, 0x18, 0x56, 0x36, 0x2f, 0xe9, 0xc1, 0x3f, 0xf2, 0x37,
-	0x38, 0xcd, 0x3c, 0x8e, 0x2b, 0xda, 0x68, 0x37, 0x3f, 0xa4, 0x3b, 0xef, 0x3e, 0x99, 0xce, 0x75,
-	0x30, 0x9b, 0xeb, 0xe0, 0xcf, 0x5c, 0x07, 0x9f, 0x17, 0xba, 0x32, 0x5b, 0xe8, 0xca, 0xcf, 0x85,
-	0xae, 0xbc, 0xbe, 0xb7, 0x7f, 0xe5, 0x62, 0x1c, 0x63, 0xfe, 0xe6, 0x44, 0x3e, 0xdc, 0xc7, 0x7f,
-	0x07, 0x00, 0x49, 0x4f, 0x37, 0x28, 0x75, 0x03, 0x00, 0x00,
+	// 560 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x95, 0xbf, 0x6f, 0xd3, 0x40,
+	0x14, 0xc7, 0x73, 0x84, 0x14, 0xe5, 0x52, 0x8a, 0x6a, 0x45, 0x6d, 0x6a, 0x90, 0x53, 0x05, 0x15,
+	0xaa, 0xa8, 0xd8, 0x6a, 0x28, 0x08, 0x75, 0x6b, 0x60, 0x8d, 0x84, 0xdc, 0xb2, 0xb0, 0x54, 0xc6,
+	0x3e, 0x39, 0x16, 0xb5, 0xcf, 0xdc, 0x5d, 0x4a, 0xba, 0x21, 0xc4, 0xc4, 0xc4, 0xcc, 0x5f, 0xc0,
+	0x98, 0x81, 0xbf, 0x01, 0x65, 0xac, 0x98, 0x98, 0x10, 0x4a, 0x86, 0xfc, 0x1b, 0xe8, 0xce, 0x3f,
+	0xe2, 0xda, 0x4e, 0x9a, 0x22, 0xa1, 0x2e, 0x51, 0xee, 0xbd, 0xef, 0xbd, 0xef, 0xe7, 0x9d, 0xde,
+	0x9d, 0x61, 0xdd, 0xc7, 0xd4, 0x61, 0x5d, 0x82, 0x3d, 0x8d, 0xf5, 0x3c, 0x0f, 0x9d, 0x38, 0x9e,
+	0xad, 0x9d, 0xee, 0x6a, 0xac, 0xaf, 0xfa, 0x04, 0x33, 0x2c, 0xad, 0xc5, 0x02, 0x35, 0x16, 0xa8,
+	0xa7, 0xbb, 0xf2, 0xaa, 0xe1, 0x3a, 0x1e, 0xd6, 0xc4, 0x6f, 0x20, 0x95, 0xd7, 0x4d, 0x4c, 0x5d,
+	0x4c, 0x35, 0x97, 0x8a, 0x12, 0x2e, 0xb5, 0xc3, 0xc4, 0x46, 0x90, 0x38, 0x16, 0x2b, 0x2d, 0x58,
+	0x84, 0xa9, 0xaa, 0x8d, 0x6d, 0x1c, 0xc4, 0xf9, 0xbf, 0x30, 0x7a, 0x7f, 0x06, 0x95, 0x6f, 0x10,
+	0xc3, 0x0d, 0xb7, 0x36, 0x7e, 0x00, 0x78, 0xa7, 0x43, 0xed, 0x57, 0xbe, 0x65, 0x30, 0xf4, 0x52,
+	0x64, 0xa4, 0xa7, 0xb0, 0x6c, 0xf4, 0x58, 0x17, 0x13, 0x87, 0x9d, 0xd5, 0xc0, 0x26, 0xd8, 0x2e,
+	0xb7, 0x6b, 0x3f, 0xbf, 0x3f, 0xaa, 0x86, 0x9e, 0x07, 0x96, 0x45, 0x10, 0xa5, 0x87, 0x8c, 0x38,
+	0x9e, 0xad, 0x4f, 0xa5, 0xd2, 0x01, 0x5c, 0x0a, 0x6a, 0xd7, 0x6e, 0x6c, 0x82, 0xed, 0x4a, 0x4b,
+	0x51, 0xf3, 0xdb, 0x56, 0x03, 0x9f, 0x76, 0x79, 0xf8, 0xbb, 0x5e, 0xf8, 0x36, 0x19, 0x34, 0x81,
+	0x1e, 0x6e, 0xdc, 0x7f, 0xf6, 0x71, 0x32, 0x68, 0x4e, 0x4b, 0x7e, 0x9e, 0x0c, 0x9a, 0x5b, 0xd3,
+	0x36, 0xfa, 0x89, 0x46, 0x52, 0xd0, 0x8d, 0x0d, 0xb8, 0x9e, 0x0a, 0xe9, 0x88, 0xfa, 0xd8, 0xa3,
+	0xa8, 0xf1, 0x15, 0xc0, 0x95, 0x0e, 0xb5, 0x9f, 0x77, 0x91, 0xf9, 0xf6, 0x48, 0x14, 0x90, 0x5a,
+	0xf0, 0x96, 0x49, 0x90, 0xc1, 0x30, 0xb9, 0xb4, 0xc1, 0x48, 0x28, 0xd5, 0x61, 0x85, 0x91, 0x1e,
+	0x65, 0xc7, 0xd4, 0xc4, 0x04, 0x89, 0x1e, 0x8b, 0x3a, 0x14, 0xa1, 0x43, 0x1e, 0x91, 0xb6, 0xe0,
+	0x0a, 0x41, 0xef, 0x7a, 0x0e, 0x41, 0x56, 0xa8, 0x29, 0x0a, 0xcd, 0xed, 0x28, 0x2a, 0x64, 0xfb,
+	0xcb, 0xbc, 0xc7, 0xa8, 0x6a, 0xa3, 0x06, 0xd7, 0x2e, 0xb2, 0xc5, 0xd8, 0x9f, 0x00, 0xac, 0xf2,
+	0x14, 0x17, 0xa2, 0x23, 0x6e, 0xa3, 0x23, 0x13, 0x13, 0xeb, 0x9f, 0xe0, 0xab, 0xb0, 0xe4, 0x78,
+	0x16, 0xea, 0x0b, 0xec, 0xb2, 0x1e, 0x2c, 0x78, 0x34, 0x09, 0x5a, 0xa2, 0x39, 0x80, 0x0a, 0xbc,
+	0x97, 0x47, 0x91, 0xc6, 0x0c, 0x4e, 0xfe, 0xba, 0x31, 0x33, 0x14, 0x31, 0xa6, 0x27, 0x28, 0x5f,
+	0xa0, 0x13, 0xf4, 0x9f, 0x28, 0x73, 0x79, 0x32, 0x7e, 0x11, 0x4f, 0x6b, 0x78, 0x13, 0x16, 0x3b,
+	0xd4, 0x96, 0xba, 0x70, 0xf9, 0xc2, 0xe5, 0x7b, 0x38, 0xeb, 0xd2, 0xa4, 0xa6, 0x5b, 0xd6, 0x16,
+	0x14, 0x46, 0x8e, 0x12, 0x82, 0x95, 0xe4, 0x15, 0x78, 0x30, 0x67, 0x7f, 0x42, 0x27, 0xab, 0x8b,
+	0xe9, 0x62, 0x9b, 0xf7, 0x70, 0x35, 0x3b, 0xb2, 0x3b, 0xf3, 0x8a, 0xa4, 0xd5, 0xf2, 0xde, 0x55,
+	0xd4, 0x49, 0xe3, 0xec, 0x10, 0xee, 0x5c, 0x7a, 0x4a, 0x8b, 0x1a, 0xcf, 0x1c, 0x2d, 0x6e, 0x9c,
+	0x9d, 0xab, 0x79, 0xc6, 0x19, 0xb5, 0xbc, 0x77, 0x15, 0x75, 0x64, 0x2c, 0x97, 0x3e, 0xf0, 0xc7,
+	0xb3, 0xfd, 0x64, 0x38, 0x52, 0xc0, 0xf9, 0x48, 0x01, 0x7f, 0x46, 0x0a, 0xf8, 0x32, 0x56, 0x0a,
+	0xe7, 0x63, 0xa5, 0xf0, 0x6b, 0xac, 0x14, 0x5e, 0xdf, 0xcd, 0x7f, 0x3b, 0xd9, 0x99, 0x8f, 0xe8,
+	0x9b, 0x25, 0xf1, 0x05, 0x78, 0xfc, 0x77, 0x00, 0xbd, 0x12, 0x94, 0x6e, 0xbe, 0x06, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -281,6 +580,12 @@ type MsgClient interface {
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
 	// CheckTunnel defines the CheckTunnel RPC.
 	CheckTunnel(ctx context.Context, in *MsgCheckTunnel, opts ...grpc.CallOption) (*MsgCheckTunnelResponse, error)
+	// CreateTrustRecord defines the CreateTrustRecord RPC.
+	CreateTrustRecord(ctx context.Context, in *MsgCreateTrustRecord, opts ...grpc.CallOption) (*MsgCreateTrustRecordResponse, error)
+	// UpdateTrustRecord defines the UpdateTrustRecord RPC.
+	UpdateTrustRecord(ctx context.Context, in *MsgUpdateTrustRecord, opts ...grpc.CallOption) (*MsgUpdateTrustRecordResponse, error)
+	// DeleteTrustRecord defines the DeleteTrustRecord RPC.
+	DeleteTrustRecord(ctx context.Context, in *MsgDeleteTrustRecord, opts ...grpc.CallOption) (*MsgDeleteTrustRecordResponse, error)
 }
 
 type msgClient struct {
@@ -309,6 +614,33 @@ func (c *msgClient) CheckTunnel(ctx context.Context, in *MsgCheckTunnel, opts ..
 	return out, nil
 }
 
+func (c *msgClient) CreateTrustRecord(ctx context.Context, in *MsgCreateTrustRecord, opts ...grpc.CallOption) (*MsgCreateTrustRecordResponse, error) {
+	out := new(MsgCreateTrustRecordResponse)
+	err := c.cc.Invoke(ctx, "/posithron.tunneling.v1.Msg/CreateTrustRecord", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateTrustRecord(ctx context.Context, in *MsgUpdateTrustRecord, opts ...grpc.CallOption) (*MsgUpdateTrustRecordResponse, error) {
+	out := new(MsgUpdateTrustRecordResponse)
+	err := c.cc.Invoke(ctx, "/posithron.tunneling.v1.Msg/UpdateTrustRecord", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteTrustRecord(ctx context.Context, in *MsgDeleteTrustRecord, opts ...grpc.CallOption) (*MsgDeleteTrustRecordResponse, error) {
+	out := new(MsgDeleteTrustRecordResponse)
+	err := c.cc.Invoke(ctx, "/posithron.tunneling.v1.Msg/DeleteTrustRecord", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
@@ -316,6 +648,12 @@ type MsgServer interface {
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
 	// CheckTunnel defines the CheckTunnel RPC.
 	CheckTunnel(context.Context, *MsgCheckTunnel) (*MsgCheckTunnelResponse, error)
+	// CreateTrustRecord defines the CreateTrustRecord RPC.
+	CreateTrustRecord(context.Context, *MsgCreateTrustRecord) (*MsgCreateTrustRecordResponse, error)
+	// UpdateTrustRecord defines the UpdateTrustRecord RPC.
+	UpdateTrustRecord(context.Context, *MsgUpdateTrustRecord) (*MsgUpdateTrustRecordResponse, error)
+	// DeleteTrustRecord defines the DeleteTrustRecord RPC.
+	DeleteTrustRecord(context.Context, *MsgDeleteTrustRecord) (*MsgDeleteTrustRecordResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -327,6 +665,15 @@ func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateP
 }
 func (*UnimplementedMsgServer) CheckTunnel(ctx context.Context, req *MsgCheckTunnel) (*MsgCheckTunnelResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckTunnel not implemented")
+}
+func (*UnimplementedMsgServer) CreateTrustRecord(ctx context.Context, req *MsgCreateTrustRecord) (*MsgCreateTrustRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTrustRecord not implemented")
+}
+func (*UnimplementedMsgServer) UpdateTrustRecord(ctx context.Context, req *MsgUpdateTrustRecord) (*MsgUpdateTrustRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTrustRecord not implemented")
+}
+func (*UnimplementedMsgServer) DeleteTrustRecord(ctx context.Context, req *MsgDeleteTrustRecord) (*MsgDeleteTrustRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTrustRecord not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -369,6 +716,60 @@ func _Msg_CheckTunnel_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CreateTrustRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateTrustRecord)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateTrustRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/posithron.tunneling.v1.Msg/CreateTrustRecord",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateTrustRecord(ctx, req.(*MsgCreateTrustRecord))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateTrustRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateTrustRecord)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateTrustRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/posithron.tunneling.v1.Msg/UpdateTrustRecord",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateTrustRecord(ctx, req.(*MsgUpdateTrustRecord))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteTrustRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteTrustRecord)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteTrustRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/posithron.tunneling.v1.Msg/DeleteTrustRecord",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteTrustRecord(ctx, req.(*MsgDeleteTrustRecord))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var Msg_serviceDesc = _Msg_serviceDesc
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "posithron.tunneling.v1.Msg",
@@ -381,6 +782,18 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckTunnel",
 			Handler:    _Msg_CheckTunnel_Handler,
+		},
+		{
+			MethodName: "CreateTrustRecord",
+			Handler:    _Msg_CreateTrustRecord_Handler,
+		},
+		{
+			MethodName: "UpdateTrustRecord",
+			Handler:    _Msg_UpdateTrustRecord_Handler,
+		},
+		{
+			MethodName: "DeleteTrustRecord",
+			Handler:    _Msg_DeleteTrustRecord_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -513,6 +926,196 @@ func (m *MsgCheckTunnelResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) 
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgCreateTrustRecord) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateTrustRecord) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateTrustRecord) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Score != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Score))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateTrustRecordResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateTrustRecordResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateTrustRecordResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateTrustRecord) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateTrustRecord) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateTrustRecord) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Score != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Score))
+		i--
+		dAtA[i] = 0x18
+	}
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateTrustRecordResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateTrustRecordResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateTrustRecordResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteTrustRecord) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteTrustRecord) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteTrustRecord) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteTrustRecordResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteTrustRecordResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteTrustRecordResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -568,6 +1171,90 @@ func (m *MsgCheckTunnel) Size() (n int) {
 }
 
 func (m *MsgCheckTunnelResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCreateTrustRecord) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Score != 0 {
+		n += 1 + sovTx(uint64(m.Score))
+	}
+	return n
+}
+
+func (m *MsgCreateTrustRecordResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateTrustRecord) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Score != 0 {
+		n += 1 + sovTx(uint64(m.Score))
+	}
+	return n
+}
+
+func (m *MsgUpdateTrustRecordResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteTrustRecord) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgDeleteTrustRecordResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -894,6 +1581,536 @@ func (m *MsgCheckTunnelResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgCheckTunnelResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateTrustRecord) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateTrustRecord: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateTrustRecord: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Score", wireType)
+			}
+			m.Score = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Score |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateTrustRecordResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateTrustRecordResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateTrustRecordResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateTrustRecord) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateTrustRecord: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateTrustRecord: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Score", wireType)
+			}
+			m.Score = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Score |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateTrustRecordResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateTrustRecordResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateTrustRecordResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteTrustRecord) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteTrustRecord: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteTrustRecord: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteTrustRecordResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteTrustRecordResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteTrustRecordResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

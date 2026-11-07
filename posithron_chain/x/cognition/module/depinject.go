@@ -13,6 +13,7 @@ import (
 	"posithron/x/cognition/types"
 	entanglementkeeper "posithron/x/entanglement/keeper"
 	greenenergykeeper "posithron/x/greenenergy/keeper"
+	tunnelingkeeper "posithron/x/tunneling/keeper"
 )
 
 var _ depinject.OnePerModuleType = AppModule{}
@@ -29,15 +30,16 @@ func init() {
 type ModuleInputs struct {
 	depinject.In
 
-	Config            *types.Module
-	StoreService      store.KVStoreService
-	Cdc               codec.Codec
-	AddressCodec      address.Codec
+	Config       *types.Module
+	StoreService store.KVStoreService
+	Cdc          codec.Codec
+	AddressCodec address.Codec
 
-	AuthKeeper        types.AuthKeeper
-	BankKeeper        types.BankKeeper
-	GreenEnergyKeeper greenenergykeeper.Keeper
+	AuthKeeper         types.AuthKeeper
+	BankKeeper         types.BankKeeper
+	GreenEnergyKeeper  greenenergykeeper.Keeper
 	EntanglementKeeper entanglementkeeper.Keeper
+	TunnelingKeeper    tunnelingkeeper.Keeper
 }
 
 type ModuleOutputs struct {
@@ -60,6 +62,7 @@ func ProvideModule(in ModuleInputs) ModuleOutputs {
 		in.BankKeeper,
 		in.GreenEnergyKeeper,
 		in.EntanglementKeeper,
+		in.TunnelingKeeper,
 	)
 	m := NewAppModule(in.Cdc, k, in.AuthKeeper, in.BankKeeper)
 

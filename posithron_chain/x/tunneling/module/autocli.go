@@ -17,6 +17,18 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:       "params",
 					Short:     "Shows the parameters of the module",
 				},
+				{
+					RpcMethod: "ListTrustRecord",
+					Use:       "list-trust-record",
+					Short:     "List all trust-record",
+				},
+				{
+					RpcMethod:      "GetTrustRecord",
+					Use:            "get-trust-record [id]",
+					Short:          "Gets a trust-record",
+					Alias:          []string{"show-trust-record"},
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "index"}},
+				},
 			},
 		},
 		Tx: &autocliv1.ServiceCommandDescriptor{
@@ -32,6 +44,24 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:            "check-tunnel [trust-score] [required-score]",
 					Short:          "Send a check-tunnel tx",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "trust_score"}, {ProtoField: "required_score"}},
+				},
+				{
+					RpcMethod:      "CreateTrustRecord",
+					Use:            "create-trust-record [index] [score]",
+					Short:          "Create a new trust-record",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "index"}, {ProtoField: "score"}},
+				},
+				{
+					RpcMethod:      "UpdateTrustRecord",
+					Use:            "update-trust-record [index] [score]",
+					Short:          "Update trust-record",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "index"}, {ProtoField: "score"}},
+				},
+				{
+					RpcMethod:      "DeleteTrustRecord",
+					Use:            "delete-trust-record [index]",
+					Short:          "Delete trust-record",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "index"}},
 				},
 			},
 		},

@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	"posithron/x/tunneling/types"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 func (k msgServer) CheckTunnel(goCtx context.Context, msg *types.MsgCheckTunnel) (*types.MsgCheckTunnelResponse, error) {

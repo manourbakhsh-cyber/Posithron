@@ -8,6 +8,12 @@ import (
 
 func RegisterInterfaces(registrar codectypes.InterfaceRegistry) {
 	registrar.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgCreateTrustRecord{},
+		&MsgUpdateTrustRecord{},
+		&MsgDeleteTrustRecord{},
+	)
+
+	registrar.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgCheckTunnel{},
 	)
 

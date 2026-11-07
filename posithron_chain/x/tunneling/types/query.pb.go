@@ -10,7 +10,7 @@ import (
 	math "math"
 	math_bits "math/bits"
 
-	_ "github.com/cosmos/cosmos-sdk/types/query"
+	query "github.com/cosmos/cosmos-sdk/types/query"
 	_ "github.com/cosmos/cosmos-sdk/types/tx/amino"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	grpc1 "github.com/cosmos/gogoproto/grpc"
@@ -115,9 +115,201 @@ func (m *QueryParamsResponse) GetParams() Params {
 	return Params{}
 }
 
+// QueryGetTrustRecordRequest defines the QueryGetTrustRecordRequest message.
+type QueryGetTrustRecordRequest struct {
+	Index string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *QueryGetTrustRecordRequest) Reset()         { *m = QueryGetTrustRecordRequest{} }
+func (m *QueryGetTrustRecordRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetTrustRecordRequest) ProtoMessage()    {}
+func (*QueryGetTrustRecordRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eb177fbd4500e4ec, []int{2}
+}
+func (m *QueryGetTrustRecordRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetTrustRecordRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetTrustRecordRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetTrustRecordRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetTrustRecordRequest.Merge(m, src)
+}
+func (m *QueryGetTrustRecordRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetTrustRecordRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetTrustRecordRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetTrustRecordRequest proto.InternalMessageInfo
+
+func (m *QueryGetTrustRecordRequest) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+// QueryGetTrustRecordResponse defines the QueryGetTrustRecordResponse message.
+type QueryGetTrustRecordResponse struct {
+	TrustRecord TrustRecord `protobuf:"bytes,1,opt,name=trust_record,json=trustRecord,proto3" json:"trust_record"`
+}
+
+func (m *QueryGetTrustRecordResponse) Reset()         { *m = QueryGetTrustRecordResponse{} }
+func (m *QueryGetTrustRecordResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetTrustRecordResponse) ProtoMessage()    {}
+func (*QueryGetTrustRecordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eb177fbd4500e4ec, []int{3}
+}
+func (m *QueryGetTrustRecordResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetTrustRecordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetTrustRecordResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetTrustRecordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetTrustRecordResponse.Merge(m, src)
+}
+func (m *QueryGetTrustRecordResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetTrustRecordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetTrustRecordResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetTrustRecordResponse proto.InternalMessageInfo
+
+func (m *QueryGetTrustRecordResponse) GetTrustRecord() TrustRecord {
+	if m != nil {
+		return m.TrustRecord
+	}
+	return TrustRecord{}
+}
+
+// QueryAllTrustRecordRequest defines the QueryAllTrustRecordRequest message.
+type QueryAllTrustRecordRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllTrustRecordRequest) Reset()         { *m = QueryAllTrustRecordRequest{} }
+func (m *QueryAllTrustRecordRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllTrustRecordRequest) ProtoMessage()    {}
+func (*QueryAllTrustRecordRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eb177fbd4500e4ec, []int{4}
+}
+func (m *QueryAllTrustRecordRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllTrustRecordRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllTrustRecordRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllTrustRecordRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllTrustRecordRequest.Merge(m, src)
+}
+func (m *QueryAllTrustRecordRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllTrustRecordRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllTrustRecordRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllTrustRecordRequest proto.InternalMessageInfo
+
+func (m *QueryAllTrustRecordRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+// QueryAllTrustRecordResponse defines the QueryAllTrustRecordResponse message.
+type QueryAllTrustRecordResponse struct {
+	TrustRecord []TrustRecord       `protobuf:"bytes,1,rep,name=trust_record,json=trustRecord,proto3" json:"trust_record"`
+	Pagination  *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllTrustRecordResponse) Reset()         { *m = QueryAllTrustRecordResponse{} }
+func (m *QueryAllTrustRecordResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllTrustRecordResponse) ProtoMessage()    {}
+func (*QueryAllTrustRecordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eb177fbd4500e4ec, []int{5}
+}
+func (m *QueryAllTrustRecordResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllTrustRecordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllTrustRecordResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllTrustRecordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllTrustRecordResponse.Merge(m, src)
+}
+func (m *QueryAllTrustRecordResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllTrustRecordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllTrustRecordResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllTrustRecordResponse proto.InternalMessageInfo
+
+func (m *QueryAllTrustRecordResponse) GetTrustRecord() []TrustRecord {
+	if m != nil {
+		return m.TrustRecord
+	}
+	return nil
+}
+
+func (m *QueryAllTrustRecordResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "posithron.tunneling.v1.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "posithron.tunneling.v1.QueryParamsResponse")
+	proto.RegisterType((*QueryGetTrustRecordRequest)(nil), "posithron.tunneling.v1.QueryGetTrustRecordRequest")
+	proto.RegisterType((*QueryGetTrustRecordResponse)(nil), "posithron.tunneling.v1.QueryGetTrustRecordResponse")
+	proto.RegisterType((*QueryAllTrustRecordRequest)(nil), "posithron.tunneling.v1.QueryAllTrustRecordRequest")
+	proto.RegisterType((*QueryAllTrustRecordResponse)(nil), "posithron.tunneling.v1.QueryAllTrustRecordResponse")
 }
 
 func init() {
@@ -125,27 +317,40 @@ func init() {
 }
 
 var fileDescriptor_eb177fbd4500e4ec = []byte{
-	// 308 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x90, 0x41, 0x4a, 0x03, 0x31,
-	0x14, 0x86, 0x27, 0x82, 0x05, 0xe3, 0xca, 0x58, 0x44, 0xaa, 0xc4, 0x32, 0x82, 0x48, 0x85, 0x09,
-	0x53, 0xf1, 0x00, 0xf6, 0x04, 0xda, 0x95, 0xb8, 0x4b, 0x25, 0xc4, 0x40, 0x9b, 0x97, 0x4e, 0xd2,
-	0xc1, 0x6e, 0xdd, 0xb9, 0x13, 0x7a, 0x09, 0x97, 0x1e, 0xa3, 0xcb, 0x82, 0x1b, 0x57, 0x22, 0x33,
-	0x82, 0xd7, 0x90, 0x26, 0x43, 0x55, 0xb4, 0xe2, 0x26, 0x3c, 0x5e, 0xbe, 0xef, 0xe5, 0xcf, 0xc3,
-	0xb1, 0x01, 0xab, 0xdc, 0x75, 0x06, 0x9a, 0xb9, 0x91, 0xd6, 0xa2, 0xaf, 0xb4, 0x64, 0x79, 0xca,
-	0x86, 0x23, 0x91, 0x8d, 0x13, 0x93, 0x81, 0x03, 0xb2, 0xb5, 0x60, 0x92, 0x05, 0x93, 0xe4, 0x69,
-	0x63, 0x83, 0x0f, 0x94, 0x06, 0xe6, 0xcf, 0x80, 0x36, 0x5a, 0x57, 0x60, 0x07, 0x60, 0x59, 0x8f,
-	0x5b, 0x11, 0x66, 0xb0, 0x3c, 0xed, 0x09, 0xc7, 0x53, 0x66, 0xb8, 0x54, 0x9a, 0x3b, 0x05, 0xba,
-	0x62, 0xeb, 0x12, 0x24, 0xf8, 0x92, 0xcd, 0xab, 0xaa, 0xbb, 0x2b, 0x01, 0x64, 0x5f, 0x30, 0x6e,
-	0x14, 0xe3, 0x5a, 0x83, 0xf3, 0x8a, 0xad, 0x6e, 0xf7, 0x97, 0xc4, 0x35, 0x3c, 0xe3, 0x83, 0x0a,
-	0x8a, 0xeb, 0x98, 0x9c, 0xcf, 0x9f, 0x3e, 0xf3, 0xcd, 0xae, 0x18, 0x8e, 0x84, 0x75, 0xf1, 0x05,
-	0xde, 0xfc, 0xd6, 0xb5, 0x06, 0xb4, 0x15, 0xe4, 0x14, 0xd7, 0x82, 0xbc, 0x8d, 0x9a, 0xe8, 0x70,
-	0xbd, 0x4d, 0x93, 0xdf, 0x7f, 0x9b, 0x04, 0xaf, 0xb3, 0x36, 0x7d, 0xd9, 0x8b, 0x1e, 0xde, 0x1f,
-	0x5b, 0xa8, 0x5b, 0x89, 0xed, 0x09, 0xc2, 0xab, 0x7e, 0x34, 0xb9, 0x43, 0xb8, 0x16, 0x38, 0xd2,
-	0x5a, 0x36, 0xe7, 0x67, 0xb4, 0xc6, 0xd1, 0xbf, 0xd8, 0x10, 0x38, 0x3e, 0xb8, 0x7d, 0x7a, 0x9b,
-	0xac, 0x34, 0x09, 0x65, 0x7f, 0xee, 0xa2, 0x73, 0x32, 0x2d, 0x28, 0x9a, 0x15, 0x14, 0xbd, 0x16,
-	0x14, 0xdd, 0x97, 0x34, 0x9a, 0x95, 0x34, 0x7a, 0x2e, 0x69, 0x74, 0xb9, 0xf3, 0x29, 0xde, 0x7c,
-	0x51, 0xdd, 0xd8, 0x08, 0xdb, 0xab, 0xf9, 0x1d, 0x1e, 0x7f, 0x0c, 0x00, 0x54, 0x36, 0x9a, 0xa9,
-	0x19, 0x02, 0x00, 0x00,
+	// 516 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0xc1, 0x6e, 0xd3, 0x30,
+	0x18, 0xc7, 0xeb, 0x8d, 0x55, 0x9a, 0x87, 0x40, 0x98, 0x0a, 0xa1, 0x14, 0x85, 0xc9, 0x43, 0x05,
+	0xca, 0x64, 0xab, 0x2d, 0x3c, 0xc0, 0x7a, 0x60, 0x97, 0x1d, 0x46, 0xc4, 0x01, 0x71, 0x41, 0xee,
+	0x6a, 0x05, 0x8b, 0xd6, 0xce, 0x62, 0xb7, 0xda, 0x84, 0xb8, 0x70, 0xe3, 0x86, 0xc4, 0x4b, 0xec,
+	0x06, 0x07, 0x1e, 0x62, 0xc7, 0x49, 0x5c, 0x38, 0x21, 0xd4, 0x22, 0x71, 0xe5, 0x11, 0x50, 0x6c,
+	0xb3, 0xa6, 0x22, 0x19, 0x2d, 0x97, 0xc8, 0x71, 0xfe, 0xff, 0xef, 0xfb, 0x39, 0xdf, 0x3f, 0x81,
+	0x38, 0x51, 0x5a, 0x98, 0x97, 0xa9, 0x92, 0xd4, 0x8c, 0xa4, 0xe4, 0x03, 0x21, 0x63, 0x3a, 0x6e,
+	0xd1, 0xc3, 0x11, 0x4f, 0x8f, 0x49, 0x92, 0x2a, 0xa3, 0xd0, 0x8d, 0x73, 0x0d, 0x39, 0xd7, 0x90,
+	0x71, 0x2b, 0xb8, 0xc6, 0x86, 0x42, 0x2a, 0x6a, 0xaf, 0x4e, 0x1a, 0x34, 0x0f, 0x94, 0x1e, 0x2a,
+	0x4d, 0x7b, 0x4c, 0x73, 0x57, 0x83, 0x8e, 0x5b, 0x3d, 0x6e, 0x58, 0x8b, 0x26, 0x2c, 0x16, 0x92,
+	0x19, 0xa1, 0xa4, 0xd7, 0xd6, 0x62, 0x15, 0x2b, 0xbb, 0xa4, 0xd9, 0xca, 0xef, 0xde, 0x8a, 0x95,
+	0x8a, 0x07, 0x9c, 0xb2, 0x44, 0x50, 0x26, 0xa5, 0x32, 0xd6, 0xa2, 0xfd, 0xd3, 0xad, 0x12, 0xdc,
+	0x84, 0xa5, 0x6c, 0xf8, 0x47, 0x74, 0xbf, 0x44, 0x64, 0xd2, 0x91, 0x36, 0x2f, 0x52, 0x7e, 0xa0,
+	0xd2, 0xbe, 0x93, 0xe2, 0x1a, 0x44, 0x4f, 0x32, 0xca, 0x7d, 0xeb, 0x8f, 0xf8, 0xe1, 0x88, 0x6b,
+	0x83, 0x9f, 0xc1, 0xeb, 0x73, 0xbb, 0x3a, 0x51, 0x52, 0x73, 0xb4, 0x03, 0xab, 0xae, 0xcf, 0x4d,
+	0xb0, 0x09, 0xee, 0x6d, 0xb4, 0x43, 0x52, 0xfc, 0x62, 0x88, 0xf3, 0x75, 0xd7, 0x4f, 0xbf, 0xdd,
+	0xae, 0x9c, 0xfc, 0xfc, 0xd4, 0x04, 0x91, 0x37, 0xe2, 0x36, 0x0c, 0x6c, 0xe5, 0x5d, 0x6e, 0x9e,
+	0x66, 0x34, 0x91, 0x85, 0xf1, 0x7d, 0x51, 0x0d, 0xae, 0x09, 0xd9, 0xe7, 0x47, 0xb6, 0xfe, 0x7a,
+	0xe4, 0x6e, 0xf0, 0x2b, 0x58, 0x2f, 0xf4, 0x78, 0xaa, 0x3d, 0x78, 0x39, 0x7f, 0x30, 0xcf, 0xb6,
+	0x55, 0xc6, 0x96, 0x2b, 0xd1, 0xbd, 0x94, 0x01, 0x46, 0x1b, 0x66, 0xb6, 0x85, 0xfb, 0x1e, 0x70,
+	0x67, 0x30, 0x28, 0x00, 0x7c, 0x0c, 0xe1, 0x6c, 0x8c, 0xbe, 0x53, 0x83, 0xb8, 0x99, 0x93, 0x6c,
+	0xe6, 0xc4, 0xe5, 0xc6, 0xcf, 0x9c, 0xec, 0xb3, 0x98, 0x7b, 0x6f, 0x94, 0x73, 0xe2, 0xcf, 0x00,
+	0xd6, 0x0b, 0xdb, 0x94, 0x9e, 0x69, 0xf5, 0xff, 0xcf, 0x84, 0x76, 0xe7, 0xa8, 0x57, 0x2c, 0xf5,
+	0xdd, 0x7f, 0x52, 0x3b, 0x94, 0x3c, 0x76, 0xfb, 0xd7, 0x2a, 0x5c, 0xb3, 0xd8, 0xe8, 0x1d, 0x80,
+	0x55, 0x37, 0x65, 0xd4, 0x2c, 0xa3, 0xfa, 0x3b, 0x58, 0xc1, 0x83, 0x85, 0xb4, 0xae, 0x33, 0x6e,
+	0xbc, 0xfd, 0xf2, 0xe3, 0xc3, 0xca, 0x26, 0x0a, 0xe9, 0x85, 0xa1, 0x47, 0x1f, 0x01, 0xbc, 0x32,
+	0x9f, 0x0d, 0xd4, 0xbe, 0xb0, 0x4f, 0x61, 0xf8, 0x82, 0xce, 0x52, 0x1e, 0xcf, 0xf8, 0xd0, 0x32,
+	0x12, 0xb4, 0x4d, 0x17, 0xf8, 0xe6, 0xe8, 0x6b, 0x1b, 0xe8, 0x37, 0xe8, 0x04, 0xc0, 0xab, 0x7b,
+	0x42, 0x2f, 0x81, 0x5c, 0x18, 0xc7, 0xa0, 0xb3, 0x94, 0xc7, 0x23, 0x6f, 0x5b, 0xe4, 0x06, 0xba,
+	0xb3, 0x08, 0x72, 0xf7, 0xd1, 0xe9, 0x24, 0x04, 0x67, 0x93, 0x10, 0x7c, 0x9f, 0x84, 0xe0, 0xfd,
+	0x34, 0xac, 0x9c, 0x4d, 0xc3, 0xca, 0xd7, 0x69, 0x58, 0x79, 0x5e, 0x9f, 0xd9, 0x8f, 0x72, 0x05,
+	0xcc, 0x71, 0xc2, 0x75, 0xaf, 0x6a, 0x7f, 0x2f, 0x9d, 0xdf, 0x03, 0x00, 0x7f, 0xb9, 0xe7, 0xa6,
+	0x5f, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -162,6 +367,10 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// ListTrustRecord Queries a list of TrustRecord items.
+	GetTrustRecord(ctx context.Context, in *QueryGetTrustRecordRequest, opts ...grpc.CallOption) (*QueryGetTrustRecordResponse, error)
+	// ListTrustRecord defines the ListTrustRecord RPC.
+	ListTrustRecord(ctx context.Context, in *QueryAllTrustRecordRequest, opts ...grpc.CallOption) (*QueryAllTrustRecordResponse, error)
 }
 
 type queryClient struct {
@@ -181,10 +390,32 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) GetTrustRecord(ctx context.Context, in *QueryGetTrustRecordRequest, opts ...grpc.CallOption) (*QueryGetTrustRecordResponse, error) {
+	out := new(QueryGetTrustRecordResponse)
+	err := c.cc.Invoke(ctx, "/posithron.tunneling.v1.Query/GetTrustRecord", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) ListTrustRecord(ctx context.Context, in *QueryAllTrustRecordRequest, opts ...grpc.CallOption) (*QueryAllTrustRecordResponse, error) {
+	out := new(QueryAllTrustRecordResponse)
+	err := c.cc.Invoke(ctx, "/posithron.tunneling.v1.Query/ListTrustRecord", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// ListTrustRecord Queries a list of TrustRecord items.
+	GetTrustRecord(context.Context, *QueryGetTrustRecordRequest) (*QueryGetTrustRecordResponse, error)
+	// ListTrustRecord defines the ListTrustRecord RPC.
+	ListTrustRecord(context.Context, *QueryAllTrustRecordRequest) (*QueryAllTrustRecordResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -193,6 +424,12 @@ type UnimplementedQueryServer struct {
 
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (*UnimplementedQueryServer) GetTrustRecord(ctx context.Context, req *QueryGetTrustRecordRequest) (*QueryGetTrustRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTrustRecord not implemented")
+}
+func (*UnimplementedQueryServer) ListTrustRecord(ctx context.Context, req *QueryAllTrustRecordRequest) (*QueryAllTrustRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTrustRecord not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -217,6 +454,42 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_GetTrustRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetTrustRecordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GetTrustRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/posithron.tunneling.v1.Query/GetTrustRecord",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GetTrustRecord(ctx, req.(*QueryGetTrustRecordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_ListTrustRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllTrustRecordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).ListTrustRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/posithron.tunneling.v1.Query/ListTrustRecord",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).ListTrustRecord(ctx, req.(*QueryAllTrustRecordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var Query_serviceDesc = _Query_serviceDesc
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "posithron.tunneling.v1.Query",
@@ -225,6 +498,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "GetTrustRecord",
+			Handler:    _Query_GetTrustRecord_Handler,
+		},
+		{
+			MethodName: "ListTrustRecord",
+			Handler:    _Query_ListTrustRecord_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -287,6 +568,153 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetTrustRecordRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetTrustRecordRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetTrustRecordRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetTrustRecordResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetTrustRecordResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetTrustRecordResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.TrustRecord.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllTrustRecordRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllTrustRecordRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllTrustRecordRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllTrustRecordResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllTrustRecordResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllTrustRecordResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.TrustRecord) > 0 {
+		for iNdEx := len(m.TrustRecord) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.TrustRecord[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -315,6 +743,62 @@ func (m *QueryParamsResponse) Size() (n int) {
 	_ = l
 	l = m.Params.Size()
 	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryGetTrustRecordRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetTrustRecordResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.TrustRecord.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllTrustRecordRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllTrustRecordResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.TrustRecord) > 0 {
+		for _, e := range m.TrustRecord {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
 	return n
 }
 
@@ -433,6 +917,377 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if err := m.Params.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetTrustRecordRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetTrustRecordRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetTrustRecordRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetTrustRecordResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetTrustRecordResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetTrustRecordResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TrustRecord", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.TrustRecord.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllTrustRecordRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllTrustRecordRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllTrustRecordRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllTrustRecordResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllTrustRecordResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllTrustRecordResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field TrustRecord", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.TrustRecord = append(m.TrustRecord, TrustRecord{})
+			if err := m.TrustRecord[len(m.TrustRecord)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
