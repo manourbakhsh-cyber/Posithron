@@ -11,6 +11,7 @@ import (
 
 	"posithron/x/cognition/keeper"
 	"posithron/x/cognition/types"
+	entanglementkeeper "posithron/x/entanglement/keeper"
 	greenenergykeeper "posithron/x/greenenergy/keeper"
 )
 
@@ -36,6 +37,7 @@ type ModuleInputs struct {
 	AuthKeeper        types.AuthKeeper
 	BankKeeper        types.BankKeeper
 	GreenEnergyKeeper greenenergykeeper.Keeper
+	EntanglementKeeper entanglementkeeper.Keeper
 }
 
 type ModuleOutputs struct {
@@ -46,7 +48,6 @@ type ModuleOutputs struct {
 }
 
 func ProvideModule(in ModuleInputs) ModuleOutputs {
-	// default to governance authority if not provided
 	authority := authtypes.NewModuleAddress(types.GovModuleName)
 	if in.Config.Authority != "" {
 		authority = authtypes.NewModuleAddressOrBech32Address(in.Config.Authority)
@@ -58,6 +59,7 @@ func ProvideModule(in ModuleInputs) ModuleOutputs {
 		authority,
 		in.BankKeeper,
 		in.GreenEnergyKeeper,
+		in.EntanglementKeeper,
 	)
 	m := NewAppModule(in.Cdc, k, in.AuthKeeper, in.BankKeeper)
 

@@ -8,6 +8,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"posithron/x/cognition/types"
+	entanglementtypes "posithron/x/entanglement/types"
 	greenenergytypes "posithron/x/greenenergy/types"
 )
 
@@ -43,7 +44,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		energyShare = 1.0
 	}
 
-	// 4. HEISENBERG TRADE-OFF: Can't be best at both
+	// 4. HEISENBERG TRADE-OFF
 	aiEffective := aiShare
 	energyEffective := energyShare
 	if aiShare > 70.0 && energyShare > 70.0 {
@@ -55,10 +56,10 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		aiEffective = aiShare * 0.7
 	}
 
-	// 5. QRNG-BASED RANDOM PHASE (deterministic per block, unpredictable)
+	// 5. QRNG-BASED RANDOM PHASE
 	seedData := fmt.Sprintf("%s-%x-%d", msg.TaskId, ctx.BlockHeader().AppHash, ctx.BlockHeight())
 	seedHash := sha256.Sum256([]byte(seedData))
-	phase := float64(seedHash[0] % 91) // 0-90 degrees (cos always >= 0)
+	phase := float64(seedHash[0] % 91) // 0-90 degrees
 	rad := phase * math.Pi / 180.0
 
 	// 6. Interference calculation
@@ -78,7 +79,23 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		),
 	)
 
-	// 8. Transfer bounty
+	// 8. Check for Entanglement to split bounty
+	var energyNodeAddr sdk.AccAddress
+	err = k.entanglementKeeper.PairRecord.Walk(ctx, nil, func(key string, value entanglementtypes.PairRecord) (bool, error) {
+		if (value.AiNode == msg.Creator || value.Creator == msg.Creator) && value.Status == "entangled" {
+			addr, err := sdk.AccAddressFromBech32(value.EnergyNode)
+			if err == nil && len(addr) > 0 {
+				energyNodeAddr = addr
+				return true, nil // Stop iteration
+			}
+		}
+		return false, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// 9. Transfer Bounty
 	creatorAddr, err := sdk.AccAddressFromBech32(task.Creator)
 	if err != nil {
 		return nil, fmt.Errorf("Invalid creator address: %s", err)
@@ -90,12 +107,42 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 
 	if len(task.Bounty) > 0 {
 		coins := sdk.NewCoins(task.Bounty...)
-		if err := k.bankKeeper.SendCoins(ctx, creatorAddr, agentAddr, coins); err != nil {
-			return nil, fmt.Errorf("Failed to transfer bounty: %s", err)
+
+		if energyNodeAddr != nil && !energyNodeAddr.Equals(agentAddr) {
+			// Split 70/30 (70% for Agent, 30% for Energy Node)
+			var energyCoins sdk.Coins
+			var agentCoins sdk.Coins
+			for _, coin := range coins {
+				energyAmt := coin.Amount.MulRaw(30).QuoRaw(100)
+				agentAmt := coin.Amount.Sub(energyAmt)
+				energyCoins = energyCoins.Add(sdk.NewCoin(coin.Denom, energyAmt))
+				agentCoins = agentCoins.Add(sdk.NewCoin(coin.Denom, agentAmt))
+			}
+
+			if err := k.bankKeeper.SendCoins(ctx, creatorAddr, energyNodeAddr, energyCoins); err != nil {
+				return nil, fmt.Errorf("Failed to transfer energy bounty: %s", err)
+			}
+			if err := k.bankKeeper.SendCoins(ctx, creatorAddr, agentAddr, agentCoins); err != nil {
+				return nil, fmt.Errorf("Failed to transfer agent bounty: %s", err)
+			}
+
+			ctx.EventManager().EmitEvent(
+				sdk.NewEvent(
+					"bounty_split_entangled",
+					sdk.NewAttribute("agent", msg.Creator),
+					sdk.NewAttribute("energy_node", energyNodeAddr.String()),
+					sdk.NewAttribute("split_ratio", "70/30"),
+				),
+			)
+		} else {
+			// Normal full transfer
+			if err := k.bankKeeper.SendCoins(ctx, creatorAddr, agentAddr, coins); err != nil {
+				return nil, fmt.Errorf("Failed to transfer bounty: %s", err)
+			}
 		}
 	}
 
-	// 9. Update task status
+	// 10. Update task status
 	task.Status = "completed"
 	if err := k.TaskRecord.Set(ctx, task.Index, task); err != nil {
 		return nil, err
