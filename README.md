@@ -48,7 +48,7 @@ We have successfully built and tested the core modules of the Posithron blockcha
 
 ## 📄 Read the Full Whitepaper
 For complete mathematical proofs, tokenomics, security simulations, and the roadmap, read our whitepaper here:
-👉 **[Read the Posithron Whitepaper](Posithron_Whitepaper.md)**
+👉 **[Read the Posithron Whitepaper](Posithron_whitepaper.md)**
 
 ---
 
