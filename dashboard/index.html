@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posithron Protocol — Live Testnet</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: radial-gradient(ellipse at top, #1a0b2e 0%, #0a0a15 50%, #000 100%);
+    color: #fff; min-height: 100vh; padding: 2rem;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  
+  /* Navigation Bar */
+  .nav {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin-bottom: 3rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-logo {
+    width: 50px; height: 50px;
+    background: linear-gradient(135deg, #9333ea, #3b82f6);
+    border-radius: 12px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.8rem;
+    box-shadow: 0 0 20px rgba(147,51,234,0.5);
+  }
+  .nav-title h1 {
+    font-size: 1.8rem; font-weight: 700;
+    background: linear-gradient(135deg, #fff, #a78bfa);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-title .subtitle { color: #a78bfa; font-size: 0.85rem; margin-top: 0.2rem; }
+  .nav-links {
+    margin-left: auto; display: flex; gap: 1.5rem;
+    font-size: 0.9rem;
+  }
+  .nav-links a {
+    color: #a78bfa; text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #c4b5fd; }
+  
+  /* Dashboard Stats */
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.4rem 1rem; border-radius: 20px;
+    background: rgba(34,197,94,0.15); color: #4ade80;
+    font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+    animation: pulse 2s infinite;
+  }
+  .dot.offline { background: #ef4444; animation: none; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem; margin-bottom: 2.5rem;
+  }
+  .card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(10px);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .card:hover { transform: translateY(-3px); border-color: rgba(167,139,250,0.4); }
+  .card-label { color: #8b8b9e; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
+  .card-value { font-size: 2.2rem; font-weight: 700; color: #fff; word-break: break-all; }
+  .card-value.mono { font-size: 1rem; font-family: monospace; color: #a78bfa; }
+  .card-sub { font-size: 0.75rem; color: #6b6b7e; margin-top: 0.5rem; }
+  .live-block {
+    background: linear-gradient(135deg, rgba(147,51,234,0.1), rgba(59,130,246,0.1));
+    border: 1px solid rgba(147,51,234,0.3);
+  }
+  .live-block .card-value { color: #a78bfa; }
+  
+  .section-title {
+    font-size: 1.2rem; font-weight: 600; margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-title::before {
+    content: ''; width: 4px; height: 20px;
+    background: linear-gradient(135deg, #9333ea, #3b82f6);
+    border-radius: 2px;
+  }
+  .blocks-feed {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 1.5rem; max-height: 400px; overflow-y: auto;
+  }
+  .block-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-family: monospace; font-size: 0.85rem;
+    animation: slideIn 0.4s ease-out;
+  }
+  .block-row:last-child { border-bottom: none; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .block-hash { color: #a78bfa; flex: 1; overflow: hidden; text-overflow: ellipsis; }
+  .block-height { color: #4ade80; font-weight: bold; min-width: 60px; }
+  .block-time { color: #6b6b7e; font-size: 0.75rem; }
+  .empty-state { color: #6b6b7e; text-align: center; padding: 2rem; }
+  
+  /* Documentation Section */
+  .docs-section {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem; margin-top: 3rem;
+  }
+  .doc-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 1.5rem; text-decoration: none;
+    color: #fff; transition: transform 0.3s, border-color 0.3s;
+  }
+  .doc-card:hover { transform: translateY(-3px); border-color: rgba(167,139,250,0.4); }
+  .doc-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #a78bfa; }
+  .doc-card p { font-size: 0.85rem; color: #8b8b9e; line-height: 1.5; }
+  
+  .footer {
+    margin-top: 4rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center; color: #6b6b7e; font-size: 0.85rem;
+  }
+  .footer a { color: #a78bfa; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Navigation -->
+  <div class="nav">
+    <div class="nav-logo">⚛️</div>
+    <div class="nav-title">
+      <h1>Posithron</h1>
+      <div class="subtitle">Quantum Protocol Testnet</div>
+    </div>
+    <div class="nav-links">
+      <a href="https://github.com/manourbakhsh-cyber/Posithron/blob/main/Posithron_Whitepaper.md" target="_blank">Whitepaper</a>
+      <a href="https://github.com/manourbakhsh-cyber/Posithron/blob/main/PITCH_DECK.md" target="_blank">Pitch Deck</a>
+      <a href="https://github.com/manourbakhsh-cyber/Posithron" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <!-- Live Status Badge -->
+  <div class="badge" id="status-badge">
+    <span class="dot" id="status-dot"></span>
+    <span id="status-text">Connecting...</span>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats">
+    <div class="card live-block">
+      <div class="card-label">⚡ Live Block Height</div>
+      <div class="card-value" id="block-height">—</div>
+      <div class="card-sub">Updating in real-time</div>
+    </div>
+    <div class="card">
+      <div class="card-label">🌐 Network</div>
+      <div class="card-value mono" id="network">—</div>
+      <div class="card-sub" id="moniker">—</div>
+    </div>
+    <div class="card">
+      <div class="card-label">⏱️ Chain Age</div>
+      <div class="card-value" id="uptime">—</div>
+      <div class="card-sub">Since genesis</div>
+    </div>
+    <div class="card">
+      <div class="card-label">🔗 Latest Block</div>
+      <div class="card-value mono" id="latest-hash">—</div>
+      <div class="card-sub">SHA-256 hash</div>
+    </div>
+  </div>
+
+  <!-- Recent Blocks -->
+  <div class="section-title">📦 Recent Blocks</div>
+  <div class="blocks-feed" id="blocks-feed">
+    <div class="empty-state">Waiting for block data...</div>
+  </div>
+
+  <!-- Documentation Links -->
+  <div class="section-title" style="margin-top: 3rem;">📚 Documentation</div>
+  <div class="docs-section">
+    <a href="https://github.com/manourbakhsh-cyber/Posithron/blob/main/README.md" target="_blank" class="doc-card">
+      <h3>📖 README</h3>
+      <p>Project overview, vision, and architecture of the Posithron Protocol.</p>
+    </a>
+    <a href="https://github.com/manourbakhsh-cyber/Posithron/blob/main/Posithron_Whitepaper.md" target="_blank" class="doc-card">
+      <h3>📄 Whitepaper</h3>
+      <p>Mathematical proofs, tokenomics, and security simulations.</p>
+    </a>
+    <a href="https://github.com/manourbakhsh-cyber/Posithron/blob/main/PITCH_DECK.md" target="_blank" class="doc-card">
+      <h3>📊 Pitch Deck</h3>
+      <p>Executive summary for investors and strategic partners.</p>
+    </a>
+    <a href="https://github.com/manourbakhsh-cyber/Posithron/blob/main/TESTNET_GUIDE.md" target="_blank" class="doc-card">
+      <h3>🛠️ Testnet Guide</h3>
+      <p>How to set up a node, create tasks, and interact with the network.</p>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>Posithron Protocol · 10 Quantum Laws Active</div>
+    <div style="margin-top: 0.5rem;">
+      <a href="https://github.com/manourbakhsh-cyber/Posithron" target="_blank">GitHub</a> ·
+      <a href="https://github.com/manourbakhsh-cyber/Posithron/blob/main/Posithron_Whitepaper.md" target="_blank">Whitepaper</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ✅ آدرس دقیق و تایید شده RPC
+  const RPC_URL = "https://automatic-rotary-phone-vp5677p5w4xqhx6pr-26657.app.github.dev";
+  
+  const seenBlocks = [];
+  let lastHeight = 0;
+  let startTime = null;
+
+  async function fetchStatus() {
+    try {
+      const res = await fetch(`${RPC_URL}/status`, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Network error');
+      const data = await res.json();
+      return data.result;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  async function fetchBlock(height) {
+    try {
+      const res = await fetch(`${RPC_URL}/block?height=${height}`, { cache: 'no-store' });
+      if (!res.ok) return null;
+      const data = await res.json();
+      return data.result;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function updateStatus(status) {
+    const badge = document.getElementById('status-badge');
+    const dot = document.getElementById('status-dot');
+    const text = document.getElementById('status-text');
+    
+    if (status) {
+      badge.style.background = 'rgba(34,197,94,0.15)';
+      badge.style.color = '#4ade80';
+      dot.classList.remove('offline');
+      text.textContent = 'Live';
+    } else {
+      badge.style.background = 'rgba(239,68,68,0.15)';
+      badge.style.color = '#ef4444';
+      dot.classList.add('offline');
+      text.textContent = 'Offline';
+    }
+  }
+
+  function formatUptime(seconds) {
+    if (seconds < 60) return `${Math.floor(seconds)}s`;
+    if (seconds < 3600) return `${Math.floor(seconds / 60)}m ${Math.floor(seconds % 60)}s`;
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    return `${h}h ${m}m`;
+  }
+
+  function renderBlocks() {
+    const feed = document.getElementById('blocks-feed');
+    if (seenBlocks.length === 0) {
+      feed.innerHTML = '<div class="empty-state">Waiting for block data...</div>';
+      return;
+    }
+    feed.innerHTML = seenBlocks.slice(0, 15).map(b => `
+      <div class="block-row">
+        <span class="block-height">#${b.height}</span>
+        <span class="block-hash">${b.hash.substring(0, 24)}...</span>
+        <span class="block-time">${b.time}</span>
+      </div>
+    `).join('');
+  }
+
+  async function tick() {
+    const status = await fetchStatus();
+    updateStatus(status);
+
+    if (!status) return;
+
+    const sync = status.sync_info;
+    const node = status.node_info;
+    const height = parseInt(sync.latest_block_height);
+
+    if (height !== lastHeight) {
+      document.getElementById('block-height').textContent = height.toLocaleString();
+      lastHeight = height;
+    }
+
+    document.getElementById('network').textContent = node.network;
+    document.getElementById('moniker').textContent = node.moniker;
+    document.getElementById('latest-hash').textContent = sync.latest_block_hash.substring(0, 16) + '...';
+
+    if (!startTime && sync.earliest_block_time) {
+      startTime = new Date(sync.earliest_block_time).getTime();
+    }
+    if (startTime) {
+      const now = new Date(sync.latest_block_time).getTime();
+      document.getElementById('uptime').textContent = formatUptime((now - startTime) / 1000);
+    }
+
+    if (height > 0 && (!seenBlocks[0] || seenBlocks[0].height !== height)) {
+      const block = await fetchBlock(height);
+      if (block) {
+        const timeStr = new Date(block.block.header.time).toLocaleTimeString();
+        seenBlocks.unshift({
+          height: height,
+          hash: block.block.header.app_hash || sync.latest_block_hash,
+          time: timeStr
+        });
+        if (seenBlocks.length > 30) seenBlocks.pop();
+        renderBlocks();
+      }
+    }
+  }
+
+  tick();
+  setInterval(tick, 5000);
+</script>
+</body>
+</html>
