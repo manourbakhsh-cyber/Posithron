@@ -11,6 +11,7 @@ import (
 	"posithron/x/cognition/types"
 	entanglementkeeper "posithron/x/entanglement/keeper"
 	greenenergykeeper "posithron/x/greenenergy/keeper"
+	hawkingkeeper "posithron/x/hawking/keeper"
 	tunnelingkeeper "posithron/x/tunneling/keeper"
 )
 
@@ -23,6 +24,7 @@ type Keeper struct {
 	greenEnergyKeeper  greenenergykeeper.Keeper
 	entanglementKeeper entanglementkeeper.Keeper
 	tunnelingKeeper    tunnelingkeeper.Keeper
+	hawkingKeeper      hawkingkeeper.Keeper
 
 	Schema     collections.Schema
 	Params     collections.Item[types.Params]
@@ -38,6 +40,7 @@ func NewKeeper(
 	greenEnergyKeeper greenenergykeeper.Keeper,
 	entanglementKeeper entanglementkeeper.Keeper,
 	tunnelingKeeper tunnelingkeeper.Keeper,
+	hawkingKeeper hawkingkeeper.Keeper,
 ) Keeper {
 	if _, err := addressCodec.BytesToString(authority); err != nil {
 		panic(fmt.Sprintf("invalid authority address %s: %s", authority, err))
@@ -54,6 +57,7 @@ func NewKeeper(
 		greenEnergyKeeper:  greenEnergyKeeper,
 		entanglementKeeper: entanglementKeeper,
 		tunnelingKeeper:    tunnelingKeeper,
+		hawkingKeeper:      hawkingKeeper,
 
 		Params:     collections.NewItem(sb, types.ParamsKey, "params", codec.CollValue[types.Params](cdc)),
 		TaskRecord: collections.NewMap(sb, types.TaskRecordKey, "taskRecord", collections.StringKey, codec.CollValue[types.TaskRecord](cdc)),

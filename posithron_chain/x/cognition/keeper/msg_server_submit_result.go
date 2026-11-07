@@ -10,6 +10,7 @@ import (
 	"posithron/x/cognition/types"
 	entanglementtypes "posithron/x/entanglement/types"
 	greenenergytypes "posithron/x/greenenergy/types"
+	hawkingtypes "posithron/x/hawking/types"
 	tunnelingtypes "posithron/x/tunneling/types"
 )
 
@@ -74,18 +75,36 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		if value.Creator == msg.Creator {
 			trustScore = value.Score
 			trustFound = true
-			return true, nil // Stop iteration
+			return true, nil
 		}
 		return false, nil
 	})
 
 	tunnelBonusApplied := false
 	if trustFound && trustScore >= 50 {
-		rewardInt = int64(float64(rewardInt) * 1.10) // +10% bonus
+		rewardInt = int64(float64(rewardInt) * 1.10)
 		tunnelBonusApplied = true
 	}
 
-	// 8. Emit event with full quantum details
+	// 8. HAWKING EVAPORATION: If agent's stake > 50M, apply -5% penalty
+	var agentStake int64 = 0
+	var stakeFound bool = false
+	_ = k.hawkingKeeper.NodeRecord.Walk(ctx, nil, func(key string, value hawkingtypes.NodeRecord) (bool, error) {
+		if value.Creator == msg.Creator {
+			agentStake = value.StakeAmount
+			stakeFound = true
+			return true, nil
+		}
+		return false, nil
+	})
+
+	hawkingApplied := false
+	if stakeFound && agentStake > 50000000 {
+		rewardInt = int64(float64(rewardInt) * 0.95) // -5% penalty
+		hawkingApplied = true
+	}
+
+	// 9. Emit event with full quantum details
 	ctx.EventManager().EmitEvent(
 		sdk.NewEvent(
 			"task_completed_with_quantum_reward",
@@ -96,11 +115,13 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 			sdk.NewAttribute("energy_effective", fmt.Sprintf("%.0f", energyEffective)),
 			sdk.NewAttribute("trust_score", fmt.Sprintf("%d", trustScore)),
 			sdk.NewAttribute("tunnel_bonus_applied", fmt.Sprintf("%t", tunnelBonusApplied)),
+			sdk.NewAttribute("agent_stake", fmt.Sprintf("%d", agentStake)),
+			sdk.NewAttribute("hawking_applied", fmt.Sprintf("%t", hawkingApplied)),
 			sdk.NewAttribute("quantum_reward_x1000", fmt.Sprintf("%d", rewardInt)),
 		),
 	)
 
-	// 9. Check for Entanglement to split bounty
+	// 10. Check for Entanglement to split bounty
 	var energyNodeAddr sdk.AccAddress
 	err = k.entanglementKeeper.PairRecord.Walk(ctx, nil, func(key string, value entanglementtypes.PairRecord) (bool, error) {
 		if (value.AiNode == msg.Creator || value.Creator == msg.Creator) && value.Status == "entangled" {
@@ -116,7 +137,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		return nil, err
 	}
 
-	// 10. Transfer Bounty
+	// 11. Transfer Bounty
 	creatorAddr, err := sdk.AccAddressFromBech32(task.Creator)
 	if err != nil {
 		return nil, fmt.Errorf("Invalid creator address: %s", err)
@@ -130,7 +151,6 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		coins := sdk.NewCoins(task.Bounty...)
 
 		if energyNodeAddr != nil && !energyNodeAddr.Equals(agentAddr) {
-			// Split 70/30 (70% for Agent, 30% for Energy Node)
 			var energyCoins sdk.Coins
 			var agentCoins sdk.Coins
 			for _, coin := range coins {
@@ -162,7 +182,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		}
 	}
 
-	// 11. Update task status
+	// 12. Update task status
 	task.Status = "completed"
 	if err := k.TaskRecord.Set(ctx, task.Index, task); err != nil {
 		return nil, err
