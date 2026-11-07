@@ -7,6 +7,7 @@ import (
 	"math"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	casimirtypes "posithron/x/casimir/types"
 	"posithron/x/cognition/types"
 	entanglementtypes "posithron/x/entanglement/types"
 	greenenergytypes "posithron/x/greenenergy/types"
@@ -104,7 +105,23 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		hawkingApplied = true
 	}
 
-	// 9. Emit event with full quantum details
+	// 9. CASIMIR REWARD: If agent has an active presence record, apply +5% bonus
+	var casimirActive bool = false
+	_ = k.casimirKeeper.PresenceRecord.Walk(ctx, nil, func(key string, value casimirtypes.PresenceRecord) (bool, error) {
+		if value.Creator == msg.Creator && value.Status == "active" {
+			casimirActive = true
+			return true, nil
+		}
+		return false, nil
+	})
+
+	casimirBonusApplied := false
+	if casimirActive {
+		rewardInt = int64(float64(rewardInt) * 1.05) // +5% bonus
+		casimirBonusApplied = true
+	}
+
+	// 10. Emit event with full quantum details
 	ctx.EventManager().EmitEvent(
 		sdk.NewEvent(
 			"task_completed_with_quantum_reward",
@@ -117,11 +134,12 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 			sdk.NewAttribute("tunnel_bonus_applied", fmt.Sprintf("%t", tunnelBonusApplied)),
 			sdk.NewAttribute("agent_stake", fmt.Sprintf("%d", agentStake)),
 			sdk.NewAttribute("hawking_applied", fmt.Sprintf("%t", hawkingApplied)),
+			sdk.NewAttribute("casimir_active", fmt.Sprintf("%t", casimirBonusApplied)),
 			sdk.NewAttribute("quantum_reward_x1000", fmt.Sprintf("%d", rewardInt)),
 		),
 	)
 
-	// 10. Check for Entanglement to split bounty
+	// 11. Check for Entanglement to split bounty
 	var energyNodeAddr sdk.AccAddress
 	err = k.entanglementKeeper.PairRecord.Walk(ctx, nil, func(key string, value entanglementtypes.PairRecord) (bool, error) {
 		if (value.AiNode == msg.Creator || value.Creator == msg.Creator) && value.Status == "entangled" {
@@ -137,7 +155,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		return nil, err
 	}
 
-	// 11. Transfer Bounty
+	// 12. Transfer Bounty
 	creatorAddr, err := sdk.AccAddressFromBech32(task.Creator)
 	if err != nil {
 		return nil, fmt.Errorf("Invalid creator address: %s", err)
@@ -182,7 +200,7 @@ func (k msgServer) SubmitResult(goCtx context.Context, msg *types.MsgSubmitResul
 		}
 	}
 
-	// 12. Update task status
+	// 13. Update task status
 	task.Status = "completed"
 	if err := k.TaskRecord.Set(ctx, task.Index, task); err != nil {
 		return nil, err

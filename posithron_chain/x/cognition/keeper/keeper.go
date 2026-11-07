@@ -9,6 +9,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 
 	"posithron/x/cognition/types"
+	casimirkeeper "posithron/x/casimir/keeper"
 	entanglementkeeper "posithron/x/entanglement/keeper"
 	greenenergykeeper "posithron/x/greenenergy/keeper"
 	hawkingkeeper "posithron/x/hawking/keeper"
@@ -25,6 +26,7 @@ type Keeper struct {
 	entanglementKeeper entanglementkeeper.Keeper
 	tunnelingKeeper    tunnelingkeeper.Keeper
 	hawkingKeeper      hawkingkeeper.Keeper
+	casimirKeeper      casimirkeeper.Keeper
 
 	Schema     collections.Schema
 	Params     collections.Item[types.Params]
@@ -41,6 +43,7 @@ func NewKeeper(
 	entanglementKeeper entanglementkeeper.Keeper,
 	tunnelingKeeper tunnelingkeeper.Keeper,
 	hawkingKeeper hawkingkeeper.Keeper,
+	casimirKeeper casimirkeeper.Keeper,
 ) Keeper {
 	if _, err := addressCodec.BytesToString(authority); err != nil {
 		panic(fmt.Sprintf("invalid authority address %s: %s", authority, err))
@@ -58,6 +61,7 @@ func NewKeeper(
 		entanglementKeeper: entanglementKeeper,
 		tunnelingKeeper:    tunnelingKeeper,
 		hawkingKeeper:      hawkingKeeper,
+		casimirKeeper:      casimirKeeper,
 
 		Params:     collections.NewItem(sb, types.ParamsKey, "params", codec.CollValue[types.Params](cdc)),
 		TaskRecord: collections.NewMap(sb, types.TaskRecordKey, "taskRecord", collections.StringKey, codec.CollValue[types.TaskRecord](cdc)),

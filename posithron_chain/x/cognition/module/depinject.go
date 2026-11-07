@@ -11,6 +11,7 @@ import (
 
 	"posithron/x/cognition/keeper"
 	"posithron/x/cognition/types"
+	casimirkeeper "posithron/x/casimir/keeper"
 	entanglementkeeper "posithron/x/entanglement/keeper"
 	greenenergykeeper "posithron/x/greenenergy/keeper"
 	hawkingkeeper "posithron/x/hawking/keeper"
@@ -42,6 +43,7 @@ type ModuleInputs struct {
 	EntanglementKeeper entanglementkeeper.Keeper
 	TunnelingKeeper    tunnelingkeeper.Keeper
 	HawkingKeeper      hawkingkeeper.Keeper
+	CasimirKeeper      casimirkeeper.Keeper
 }
 
 type ModuleOutputs struct {
@@ -66,6 +68,7 @@ func ProvideModule(in ModuleInputs) ModuleOutputs {
 		in.EntanglementKeeper,
 		in.TunnelingKeeper,
 		in.HawkingKeeper,
+		in.CasimirKeeper,
 	)
 	m := NewAppModule(in.Cdc, k, in.AuthKeeper, in.BankKeeper)
 
